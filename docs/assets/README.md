@@ -1,5 +1,5 @@
 Add your images here:
-- logo_vector_only.png -> put the file you uploaded at c:\Users\Shadab\Pictures\logo_vector_only.png
+- logo-black.png -> put the file you uploaded at c:\Users\Shadab\Pictures\logo-black.png
 - Asset 5.png -> flyer
 - banner.png -> banner image
 

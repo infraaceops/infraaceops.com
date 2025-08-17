@@ -1,0 +1,82 @@
+/* Modern, responsive theme for infraAceOps */
+:root{
+  --bg:#f3f7f9;
+  --card:#ffffff;
+  --muted:#6b7280;
+  --accent:#06b6d4; /* cyan */
+  --accent-2:#0ea5a4; /* teal */
+  --text:#0f172a;
+  --radius:12px;
+}
+
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0;
+  font-family:Inter,system-ui,-apple-system,'Segoe UI',Roboto,'Helvetica Neue',Arial;
+  background:var(--bg);
+  color:var(--text);
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+}
+
+/* Header */
+.site-header{background:transparent;padding:18px 28px}
+.nav{display:flex;align-items:center;justify-content:space-between;max-width:1100px;margin:0 auto}
+.brand{display:flex;align-items:center;gap:14px}
+.brand .logo{height:44px}
+.links{display:flex;gap:18px}
+.links a{color:var(--text);text-decoration:none;font-weight:500}
+.links a:hover{color:var(--accent-2)}
+
+/* Page layout */
+.hero{max-width:1200px;margin:18px auto;padding:48px;border-radius:var(--radius);overflow:hidden;position:relative}
+.hero::before{content:'';position:absolute;inset:0;background-image:url('../assets/banner.png');background-size:cover;background-position:center;filter:brightness(.38) saturate(.95);border-radius:var(--radius);z-index:0}
+.hero-inner{position:relative;z-index:1;display:flex;flex-direction:column;align-items:center;gap:12px;padding:28px}
+.hero-logo{height:72px;opacity:.95}
+.hero h1{color:#fff;font-size:34px;line-height:1.05;margin:6px 0;text-align:center}
+.hero p{color:rgba(255,255,255,.9);max-width:820px;text-align:center}
+.btn.primary{display:inline-block;background:var(--accent);color:#042022;padding:12px 18px;border-radius:10px;text-decoration:none;font-weight:600}
+
+/* Content container */
+.container{max-width:980px;margin:26px auto 80px;padding:28px;background:var(--card);border-radius:12px;box-shadow:0 8px 30px rgba(2,6,23,.08)}
+
+h1.page-title{font-size:28px;margin:0 0 16px}
+
+/* Profile form card */
+#auth-section{margin-bottom:12px}
+#profile-form{background:linear-gradient(180deg,#fff,#fbfdff);padding:18px;border-radius:10px;border:1px solid #eef2f7}
+label{display:block;margin:12px 0;font-weight:600;color:var(--text)}
+input[type=text],input[type=email],input[type=tel],input[type=date],textarea{width:100%;padding:10px;border-radius:8px;border:1px solid #e6eef5;background:#fff}
+textarea{min-height:120px}
+.actions{display:flex;gap:10px;margin-top:12px}
+button, .btn{background:var(--accent);color:#042022;padding:10px 14px;border-radius:8px;border:0;cursor:pointer;font-weight:600}
+button.secondary{background:#eef5f6;color:var(--text)}
+.muted{color:var(--muted);font-size:14px}
+.hidden{display:none}
+
+/* Training section */
+.course-grid{display:grid;grid-template-columns:300px 1fr;gap:22px;align-items:start}
+.course-flyer{width:100%;height:auto;border-radius:8px;box-shadow:0 6px 18px rgba(2,6,23,.06)}
+.original{color:var(--muted);text-decoration:line-through;margin-right:8px}
+.discounted{color:var(--accent-2);font-weight:700}
+
+/* Admin list */
+.enroll-row{padding:10px;border-bottom:1px dashed #eef2f5;display:flex;align-items:center;gap:12px}
+.enroll-row strong{min-width:200px}
+
+/* Footer */
+footer{max-width:980px;margin:28px auto;text-align:center;color:var(--muted)}
+
+/* Responsive */
+@media (max-width:900px){
+  .course-grid{grid-template-columns:1fr;}
+  .hero h1{font-size:24px}
+  .nav{padding:0 8px}
+  .container{margin:18px 12px}
+}
+
+@media (max-width:480px){
+  .hero{padding:18px}
+  .hero-logo{height:56px}
+}
