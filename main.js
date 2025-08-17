@@ -28,6 +28,47 @@ function showStatus(msg, ok=true){
   statusEl.style.color = ok ? 'green' : 'red'
 }
 
+// --- Google Forms integration ---
+// Replace FORM_ACTION_URL and mapping with your Google Form details (see README for instructions)
+const GOOGLE_FORM_ACTION = 'https://docs.google.com/forms/d/e/FORM_ID/formResponse'
+const GOOGLE_FORM_MAPPING = {
+  name: 'entry.1234567890',
+  place: 'entry.2345678901',
+  birth: 'entry.3456789012',
+  phone: 'entry.4567890123',
+  education: 'entry.5678901234',
+  experience: 'entry.6789012345',
+  profession: 'entry.7890123456'
+}
+
+function submitToGoogleForm(profile){
+  if(!GOOGLE_FORM_ACTION) return
+  let iframe = document.getElementById('gf_iframe')
+  if(!iframe){
+    iframe = document.createElement('iframe')
+    iframe.name = 'gf_iframe'
+    iframe.id = 'gf_iframe'
+    iframe.style.display = 'none'
+    document.body.appendChild(iframe)
+  }
+  const form = document.createElement('form')
+  form.action = GOOGLE_FORM_ACTION
+  form.method = 'POST'
+  form.target = 'gf_iframe'
+  form.style.display = 'none'
+
+  Object.keys(GOOGLE_FORM_MAPPING).forEach(key => {
+    const input = document.createElement('input')
+    input.type = 'hidden'
+    input.name = GOOGLE_FORM_MAPPING[key]
+    input.value = profile[key] || ''
+    form.appendChild(input)
+  })
+  document.body.appendChild(form)
+  form.submit()
+  setTimeout(()=> form.remove(), 1200)
+}
+
 async function updateUIForUser(user){
   currentUser = user
   if(user){
@@ -68,10 +109,14 @@ btnSave.onclick = async ()=>{
     // save to Supabase table 'profiles' with user_id = currentUser.id
     const { data, error } = await supabase.from('profiles').upsert([{ user_id: currentUser.id, ...payload }])
     if(error) showStatus('Save error: '+error.message, false)
-    else showStatus('Saved to Supabase')
+    else {
+      showStatus('Saved to Supabase')
+      try{ submitToGoogleForm(payload) }catch(e){ console.warn('Google form submit failed', e) }
+    }
   } else {
     localStorage.setItem('profile', JSON.stringify(payload))
     showStatus('Saved locally (no auth)')
+    try{ submitToGoogleForm(payload) }catch(e){ console.warn('Google form submit failed', e) }
   }
 }
 

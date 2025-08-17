@@ -6,23 +6,39 @@ const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY)
 
 const btnEnroll = document.getElementById('btn-enroll')
 const status = document.getElementById('enroll-status')
+const paymentInput = document.getElementById('payment-proof')
+
+async function uploadPaymentProof(userId, enrollmentId, file){
+  if(!file) return null
+  const path = `${userId}/${Date.now()}_${file.name.replace(/\s+/g,'_')}`
+  const { data: up, error: upErr } = await supabase.storage.from('payment-proofs').upload(path, file)
+  if(upErr) throw upErr
+  const { data: pub } = supabase.storage.from('payment-proofs').getPublicUrl(path)
+  const publicUrl = pub.publicUrl
+  const { error: uErr } = await supabase.from('enrollments').update({ payment_proof_url: publicUrl, payment_proof_uploaded_at: new Date() }).eq('id', enrollmentId)
+  if(uErr) throw uErr
+  return publicUrl
+}
 
 btnEnroll.onclick = async ()=>{
   btnEnroll.disabled = true
-  // require login or allow anonymous save
+  const file = paymentInput.files[0]
+  if(!file){ status.textContent = 'Please attach payment proof before enrolling.'; btnEnroll.disabled=false; return }
+
   const { data: { session } } = await supabase.auth.getSession()
   if(session && session.user){
     // create enrollment row
-    const { error } = await supabase.from('enrollments').insert([{ user_id: session.user.id, course: 'fullstack-devops', price_pkr: 50000, status: 'pending' }])
+    const { data, error } = await supabase.from('enrollments').insert([{ user_id: session.user.id, course: 'fullstack-devops', price_pkr: 50000, status: 'pending' }]).select().single()
     if(error) { status.textContent = 'Enroll error: '+error.message; btnEnroll.disabled=false; return }
-    status.textContent = 'Enrolled (pending). Admin can verify and reserve a seat.'
+    try{
+      await uploadPaymentProof(session.user.id, data.id, file)
+      status.textContent = 'Enrolled (pending). Payment proof uploaded.'
+    }catch(e){ status.textContent = 'Upload failed: '+e.message }
   } else {
-    // store in localStorage as fallback
-    const pending = JSON.parse(localStorage.getItem('pending_enroll')||'[]')
-    pending.push({ id: Date.now(), course: 'fullstack-devops', price_pkr: 50000 })
-    localStorage.setItem('pending_enroll', JSON.stringify(pending))
-    status.textContent = 'Enrollment saved locally. Sign in later to persist.'
+    // store in localStorage as fallback (files cannot be stored in localStorage)
+    status.textContent = 'Please sign in to enroll and upload payment proof.'
   }
+  btnEnroll.disabled = false
 }
 
 // Simple UI to show discount percentage (computed)
