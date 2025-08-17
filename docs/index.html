@@ -6,6 +6,18 @@
   <title>Login (Supabase + Static)</title>
   <link rel="stylesheet" href="styles.css">
 
+  <!-- Page background image (assets/bg.jpg) -->
+  <style>
+    body {
+      background-image: url('assets/bg.jpg');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+    }
+    @media (max-width: 900px) { body { background-attachment: scroll; } }
+  </style>
+
   <!-- Redirect infraaceops.github.io root to /infraaceops.com/ -->
   <script>
     (function(){
@@ -36,7 +48,7 @@
     <div class="hero-inner">
       <!-- removed centered hero logo to avoid large watermark in middle -->
       <h1>Embrace The Future Of Cloud Computing</h1>
-      <p class="muted">Upskill with practical Full‑Stack & DevOps training and real-world labs.</p>
+      <p class="muted">Upskill with practical  DevOps training and real-world labs.</p>
       <p><a class="btn primary" href="training.html">View Training & Enroll</a></p>
       <!-- small logos row removed to keep hero clean -->
     </div>
