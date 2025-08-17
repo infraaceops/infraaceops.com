@@ -1,5 +1,5 @@
 Add your images here:
-- logo-black.png -> put the file you uploaded at c:\Users\Shadab\Pictures\logo-black.png
+- logo-white.png -> put the file you uploaded at c:\Users\Shadab\Pictures\logo-white.png
 - Asset 5.png -> flyer
 - banner.png -> banner image
 

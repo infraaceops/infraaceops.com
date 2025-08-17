@@ -8,15 +8,17 @@
   <style>
     body { background-image: url('assets/bg.jpg'); background-size:cover; background-position:center; background-repeat:no-repeat; background-attachment:fixed }
     @media (max-width:900px){ body{ background-attachment:scroll } }
+    .nav .links a, .nav .links a strong { color: #ffffff !important; }
+    .nav .links a:hover { color: #e6f9fb !important; }
   </style>
 </head>
 <body>
   <header class="site-header">
     <div class="nav">
-      <a href="https://infraaceops.github.io/infraaceops.com/" class="brand"><img src="assets/logo-black.png" alt="logo" class="logo"/></a>
+      <a href="https://infraaceops.github.io/infraaceops.com/" class="brand"><img src="assets/logo-white.png" alt="logo" class="logo"/></a>
       <nav class="links">
-        <a href="https://infraaceops.github.io/infraaceops.com/">Home</a>
-        <a href="training.html">Training</a>
+        <a href="https://infraaceops.github.io/infraaceops.com/"><strong>Home</strong></a>
+        <a href="training.html"><strong>Training</strong></a>
       </nav>
     </div>
   </header>
@@ -30,7 +32,11 @@
           <h2>Boost Your DevOps with AI - Short Course</h2>
           <p class="muted">Comprehensive training covering development and operations.</p>
 
-          <p>Price: <span class="original"><p><del>PKR 60,000</del></p></span> <strong class="discounted">PKR 50,000</strong></p>
+          <p>Price:
+            <span style="text-decoration: line-through; color: gray; margin-right:8px;">PKR 60,000</span>
+            <span style="font-weight: bold; color: #16a34a; margin-right:8px;">PKR 50,000</span>
+            <span style="color: red;">(17% OFF)</span>
+          </p>
           <div style="height:8px"></div>
           <a id="btn-enroll" class="btn primary" href="https://forms.gle/h6wWxfXZXDMR8sKh8" target="_blank" rel="noopener">Enroll now</a>
            <p id="enroll-status" class="muted"></p>
