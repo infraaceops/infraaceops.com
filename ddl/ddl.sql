@@ -18,28 +18,27 @@ create index if not exists remembers_hash_idx on remembers(token_hash);
 
 -- Enable RLS
 alter table remembers enable row level security;
+create policy profiles_select_owner on public.profiles
+  for select using (user_id = auth.uid()::text);
 
--- Owners can select their own remember rows
+create policy profiles_insert_owner on public.profiles
+  for insert with check (user_id = auth.uid()::text);
+
+create policy profiles_update_owner on public.profiles
+  for update using (user_id = auth.uid()::text) with check (user_id = auth.uid()::text);
+
 create policy remembers_select_owner on remembers
-  for select using (user_id = auth.uid());
+  for select using (user_id = auth.uid()::text);
 
--- Owners can insert rows where user_id = auth.uid()
 create policy remembers_insert_owner on remembers
-  for insert with check (user_id = auth.uid());
+  for insert with check (user_id = auth.uid()::text);
 
--- Owners can delete their own rows
 create policy remembers_delete_owner on remembers
-  for delete using (user_id = auth.uid());
+  for delete using (user_id = auth.uid()::text);
 
--- Owners can update their own rows (e.g. to revoke their tokens)
 create policy remembers_update_owner on remembers
-  for update using (user_id = auth.uid()) with check (user_id = auth.uid());
-
--- Admin update policy: users listed in `admins` table can update (revoke/reserve)
--- (Admins table created below)
-create policy remembers_admin_update on remembers
-  for update using (exists (select 1 from admins where admins.email = auth.email()))
-  with check (exists (select 1 from admins where admins.email = auth.email()));
+  for update using (user_id = auth.uid()::text)
+  with check (user_id = auth.uid()::text);
 
 -- Admins table (identify admins by email for simplicity)
 create table if not exists admins (
