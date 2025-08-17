@@ -5,6 +5,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Profile Form (Supabase + Static)</title>
   <link rel="stylesheet" href="styles.css">
+
+  <!-- Redirect infraaceops.github.io root to /infraaceops.com/ -->
+  <script>
+    (function(){
+      try{
+        const host = location.hostname;
+        const pathname = location.pathname;
+        if(host === 'infraaceops.github.io' && (pathname === '/' || pathname === '')){
+          // use replace so back button doesn't return to this redirect page
+          location.replace('/infraaceops.com/');
+        }
+      }catch(e){ /* ignore */ }
+    })();
+  </script>
 </head>
 <body>
   <header class="site-header">
