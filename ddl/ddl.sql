@@ -36,16 +36,26 @@ create policy remembers_update_owner on remembers
   for update using (user_id = auth.uid()) with check (user_id = auth.uid());
 
 -- Admin update policy: users listed in `admins` table can update (revoke/reserve)
--- (Assumes you have an `admins` table with user_id text primary key)
+-- (Admins table created below)
 create policy remembers_admin_update on remembers
-  for update using (exists (select 1 from admins where admins.user_id = auth.uid()))
-  with check (exists (select 1 from admins where admins.user_id = auth.uid()));
+  for update using (exists (select 1 from admins where admins.email = auth.email()))
+  with check (exists (select 1 from admins where admins.email = auth.email()));
 
--- Insert a new remember token (replace <UID> and <TOKEN_VALUE> with actuals).
+-- Admins table (identify admins by email for simplicity)
+create table if not exists admins (
+  email text primary key,
+  added_at timestamptz default now()
+);
+
+-- Example admin row (change to your admin email before running if desired)
+-- Replace 'admin@infraaceops.com' with the real admin email you will sign in with.
+insert into admins (email) values ('shahshadab1680@gmail.com') on conflict do nothing;
+
+-- Insert a new remember token (example). Replace <UID> and <TOKEN_VALUE> when using.
 -- Prefer: compute digest('<TOKEN_VALUE>','sha256') on backend and send hex string to DB.
 insert into remembers (user_id, token_hash, device_info, ip, expires_at)
 values (
-  '<UID>',
+  'shadab',
   encode(digest('<TOKEN_VALUE>', 'sha256'), 'hex'),
   'Chrome on Windows 11',
   '203.0.113.5',
