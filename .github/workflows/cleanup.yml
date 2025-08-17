@@ -1,0 +1,27 @@
+name: Daily DB cleanup
+
+on:
+  schedule:
+    - cron: '0 3 * * *'   # daily at 03:00 UTC
+  workflow_dispatch:      # allow manual run
+
+jobs:
+  cleanup:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Install psql (postgres client)
+        run: sudo apt-get update && sudo apt-get install -y postgresql-client
+
+      - name: Run cleanup SQL
+        env:
+          DATABASE_URL: ${{ secrets.SUPABASE_DB_URL }}
+        run: |
+          if [ -z "$DATABASE_URL" ]; then
+            echo "ERROR: DATABASE_URL secret is not set. Create a repo secret named SUPABASE_DB_URL containing your Postgres connection string (postgres://user:pass@host:port/db).";
+            exit 1;
+          fi
+          echo "Running cleanup.sql against database..."
+          psql "$DATABASE_URL" -v ON_ERROR_STOP=1 -f ddl/cleanup.sql

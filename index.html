@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Profile Form (Supabase + Static)</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="nav">
+      <a href="/" class="brand"><img src="assets/logo_vector_only.png" alt="logo" class="logo"/></a>
+      <nav class="links">
+        <a href="/">Home</a>
+        <a href="training.html">Training</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <h1>Profile form</h1>
+
+    <section id="auth-section">
+      <div id="signed-out">
+        <input id="email" type="email" placeholder="you@example.com" />
+        <button id="btn-signin">Send magic link</button>
+        <button id="btn-skip">Continue without login (local only)</button>
+        <p class="muted">Using email magic links (Supabase). Check your inbox after clicking "Send".</p>
+      </div>
+      <div id="signed-in" class="hidden">
+        <p>Signed in as <span id="user-email"></span></p>
+        <button id="btn-signout">Sign out</button>
+      </div>
+    </section>
+
+    <form id="profile-form" class="hidden">
+      <label>Name<input id="name" /></label>
+      <label>Place of birth<input id="place" /></label>
+      <label>Date of birth<input id="birth" type="date" /></label>
+      <label>Phone<input id="phone" type="tel" /></label>
+      <label>Education<textarea id="education"></textarea></label>
+      <label>Past experience<textarea id="experience"></textarea></label>
+      <label>Profession<input id="profession" /></label>
+
+      <div class="actions">
+        <button id="btn-save" type="button">Save profile</button>
+        <button id="btn-load" type="button">Load profile</button>
+      </div>
+
+      <p id="status" class="muted"></p>
+    </form>
+
+    <footer>
+      <p class="muted">Deploy this folder to GitHub Pages or any static host. See README.md for setup steps.</p>
+    </footer>
+  </main>
+
+  <script type="module" src="main.js"></script>
+</body>
+</html>
