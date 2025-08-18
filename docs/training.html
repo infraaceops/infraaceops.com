@@ -10,6 +10,32 @@
     @media (max-width:900px){ body{ background-attachment:scroll } }
     .nav .links a, .nav .links a strong { color: #ffffff !important; }
     .nav .links a:hover { color: #e6f9fb !important; }
+  /* Flyer-specific styles (scoped to training page) */
+  /* Make flyer container slightly larger to avoid clipping/edge issues */
+  .flyer-wrap { width:960px; height:560px; max-width:100%; margin:0 auto; display:block; box-sizing:border-box; }
+  .flyer-card { box-shadow:0 10px 30px rgba(2,6,23,.14); border-radius:14px; overflow:hidden; background:linear-gradient(180deg,#0f5f99 0%, #0b4f80 100%); color:#fff; height:100%; display:flex; }
+  .flyer-grid { display:grid; grid-template-columns: 1fr 460px; gap:24px; padding:36px; align-items:start; box-sizing:border-box; width:100%; }
+  .flyer-left { padding-right:10px; }
+  /* Avatar: force a square container and make the image a perfect circle */
+  .avatar { width:110px; height:110px; min-width:110px; min-height:110px; border-radius:50%; overflow:hidden; border:3px solid rgba(255,255,255,.18); display:inline-block; flex:0 0 110px; }
+  .avatar img { width:110px; height:110px; object-fit:cover; display:block; border-radius:50%; }
+  .brand-by { display:inline-block; margin-left:12px; vertical-align:middle; }
+  .tagline { font-size:12px; letter-spacing:.08em; font-weight:700; color:#d9f0ff; }
+  .flyer-title { font-size:42px; line-height:1.03; font-weight:900; margin:6px 0 4px; color:#fff; letter-spacing:0.6px; text-transform:none; text-shadow:0 4px 18px rgba(2,6,23,.25); }
+  .flyer-sub { font-size:15px; color:#e6f9fb; margin-bottom:12px; }
+  .badge { display:inline-block; background:#ffcf54; color:#0b2d4e; padding:6px 10px; border-radius:8px; font-weight:800; margin-bottom:10px; }
+  .highlights { margin:12px 0 14px; }
+  .highlights li { margin:6px 0; color:#fff; }
+  .schedule { background:rgba(255,255,255,.06); padding:10px; border-radius:8px; margin-top:8px; font-size:13px; }
+  .flyer-right { padding:22px 18px; background:linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.01)); border-radius:8px; height:fit-content; }
+  .price-row { display:flex; align-items:center; gap:10px; margin-bottom:14px; }
+  .old-price { text-decoration:line-through; color:#cbd5e1; }
+  .new-price { font-size:26px; color:#84e1a3; font-weight:800; }
+  .discount { color:#ffc9b3; background:rgba(255,69,58,.08); padding:6px 8px; border-radius:8px; font-weight:700; }
+  .cta { display:inline-block; margin-top:8px; background:#16a34a; color:#fff; padding:10px 14px; border-radius:10px; font-weight:800; text-decoration:none; }
+  .meta { font-size:13px; color:rgba(255,255,255,.85); margin-top:10px; }
+  .seats { display:inline-block; background:#e8f3ff; color:#0b2d4e; padding:6px 10px; border-radius:8px; font-weight:800; margin-top:10px; }
+  @media (max-width:980px){ .flyer-grid { grid-template-columns: 1fr; padding:18px; } .flyer-right{ margin-top:8px } .flyer-title{ font-size:32px } }
   </style>
 </head>
 <body>
@@ -24,9 +50,9 @@
   </header>
 
   <main class="container">
-    <h1 class="page-title">infraAceOps DevOps Training</h1>
+    <h1 class="page-title">DevOps Masterclass - From Zero to Multi-Cloud Hero</h1>
 
-    <section class="course">
+    <!-- <section class="course">
       <div class="course-grid">
         <div>
           <h2>Boost Your DevOps with AI - Short Course</h2>
@@ -42,56 +68,58 @@
            <p id="enroll-status" class="muted"></p>
          </div>
        </div>
-     </section>
+     </section> -->
 
     <section class="flyer">
-      <div style="width:890px; height:520px; max-width:100%; margin:0 auto; display:flex; align-items:center; justify-content:center;">
-        <span style="display:inline-block; font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif; line-height:1.35; color:#0b2d4e; background:#0f5f99; padding:20px; border-radius:14px; box-shadow:0 6px 18px rgba(0,0,0,.15); text-align:center; width:100%; height:100%; overflow:auto;">
+      <div class="flyer-wrap">
+        <div class="flyer-card">
+          <div class="flyer-grid">
+            <div class="flyer-left">
+              <div style="display:flex; align-items:center;">
+                <div class="avatar"><img src="assets/me.png" alt="Instructor" style="width:100%;height:100%;object-fit:cover;display:block"/></div>
+                <div class="brand-by">
+                  <div class="tagline">AI-BASED BOOSTING</div>
+                  <div style="font-weight:700; color:#fff; margin-top:6px;">By <strong>Syed Shadab Hussain Shah</strong></div>
+                </div>
+              </div>
 
-  <!-- Circle Profile Picture -->
-  <span style="display:inline-block; width:100px; height:100px; border-radius:50%; overflow:hidden; border:3px solid #fff; margin-bottom:12px;">
-    <img src="yourpic.jpg" alt="Profile Picture" style="width:100%; height:100%; object-fit:cover;">
-  </span>
-  <br>
+              <h1 class="flyer-title">DevOps Masterclass<br/><span style="font-size:18px; font-weight:700; color:#d9f0ff;">From Zero to Multi-Cloud Hero</span></h1>
+              <p class="flyer-sub">An immersive, hands-on masterclass covering core DevOps, cloud-native patterns, CI/CD, infra-as-code, monitoring, and AI-accelerated workflows — practical labs and real-world pipelines.</p>
 
-  <span style="display:block; color:#fff; font-size:14px; letter-spacing:.08em; font-weight:700;">AI-BASED BOOSTING</span>
-  <span style="display:block; color:#fff; font-size:48px; font-weight:800; letter-spacing:.02em;">DEVOPS</span>
-  <span style="display:block; color:#d9f0ff; font-size:16px; font-weight:700; margin-top:-4px;">SHORT COURSE</span>
-  <br>
-  <span style="display:inline-block; background:#1876bd; color:#fff; padding:8px 12px; border-radius:10px; font-weight:700;">By Syed Shadab Hussain Shah</span>
-  <br><br>
+              <div class="badge">COURSE HIGHLIGHTS</div>
+              <ul class="highlights">
+                <li>Step-by-step DevOps learning roadmap</li>
+                <li>AI tools ka effective istemal to boost your DevOps career</li>
+                <li>Tools installation + hands-on practice</li>
+              </ul>
 
-  <span style="display:inline-block; background:#ffcf54; color:#0b2d4e; padding:6px 10px; border-radius:10px; font-weight:800;">COURSE HIGHLIGHTS</span>
-  <br>
-  <span style="display:block; color:#fff;">• Step-by-step DevOps learning roadmap</span>
-  <span style="display:block; color:#fff;">• AI tools ka effective istemal to boost your DevOps career</span>
-  <span style="display:block; color:#fff;">• Tools installation + hands-on practice</span>
-  <br>
+              <div class="schedule">
+                <strong>Schedule</strong>
+                <div>• 3 Days a Week — Friday to Sunday</div>
+                <div>• Timings: 8:00 AM to 10:00 AM (Pakistan Standard Time)</div>
+                <div>• Duration: 2 hours per day</div>
+              </div>
+            </div>
 
-  <span style="display:inline-block; background:#ffcf54; color:#0b2d4e; padding:6px 10px; border-radius:10px; font-weight:800;">SCHEDULE</span>
-  <br>
-  <span style="display:block; color:#fff;">• 3 Days a Week — Friday to Sunday</span>
-  <span style="display:block; color:#fff;">• Timings: 8:00 AM to 10:00 AM <span style="opacity:.9;">(Pakistan Standard Time)</span></span>
-  <span style="display:block; color:#fff;">• Duration: 2 hours per day</span>
-  <br>
-
-  <span style="display:inline-block; background:#ffcf54; color:#0b2d4e; padding:6px 10px; border-radius:10px; font-weight:800;">WHY JOIN?</span>
-  <br>
-  <span style="display:block; color:#fff;">• Beginners friendly 12 coding experts ban'na zaroori nahi</span>
-  <span style="display:block; color:#fff;">• Focused on real-world DevOps + AI integration</span>
-  <span style="display:block; color:#fff;">• Direct mentoring from Syed Shadab Hussain Shah <span style="opacity:.9;">(5+ years experience in DevOps &amp; Big Data)</span></span>
-  <br>
-
-  <span style="display:inline-block; background:#0b3e68; color:#ffcf54; padding:10px 12px; border-radius:12px; font-weight:800;">
-    LIVE SESSIONS FOR <span style="font-size:20px;">2 HOURS</span> — LAST 3 WORKING DAYS
-  </span>
-  <br><br>
-
-  <span style="display:block; color:#fff; font-weight:800;">2 WEEKS COURSE</span>
-  <span style="display:block; color:#fff; font-weight:800;">10 LIMITED SEATS</span>
-  <span style="display:inline-block; background:#e8f3ff; color:#0b2d4e; padding:6px 10px; border-radius:10px; font-weight:800; margin-top:6px;">ONLY REMOTE FOR NOW</span>
-
-</span>
+            <aside class="flyer-right">
+              <div style="text-align:right"> 
+                <div class="price-row">
+                  <div class="old-price">PKR 60,000</div>
+                  <div class="new-price">PKR 50,000</div>
+                  <div class="discount">17% OFF</div>
+                </div>
+                <a class="cta" href="https://forms.gle/h6wWxfXZXDMR8sKh8" target="_blank" rel="noopener">ENROLL NOW</a>
+                <div class="meta">Limited seats. Manual verification required after payment proof upload.</div>
+                <div class="seats">10 LIMITED SEATS</div>
+                <div style="margin-top:14px; font-size:13px; color:rgba(255,255,255,.85)">
+                  <strong>Live sessions:</strong>
+                  <div>2 hours per day — last 3 working days</div>
+                  <div style="margin-top:8px;">Duration: <strong>2 WEEKS</strong></div>
+                </div>
+              </div>
+            </aside>
+          </div>
+        </div>
       </div>
     </section>
 

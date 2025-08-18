@@ -5,7 +5,7 @@
 .brand{display:flex;align-items:center;gap:12px}
 .logo{height:38px}
 .links a{margin-left:12px;color:#111;text-decoration:none}
-.container{max-width:760px;margin:0 auto;background:var(--card);padding:24px;border-radius:8px;box-shadow:0 6px 18px rgba(16,24,40,.06)}
+.container{max-width:1120px;margin:0 auto;background:var(--card);padding:32px;border-radius:10px;box-shadow:0 8px 26px rgba(16,24,40,.08)}
 .h1{margin-top:0}
 label{display:block;margin:12px 0}input,textarea{width:100%;padding:8px;border:1px solid #e6e9ef;border-radius:6px}
 .actions{display:flex;gap:8px;margin-top:12px}
