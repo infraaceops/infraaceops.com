@@ -1,134 +1,209 @@
 <!doctype html>
 <html lang="en">
+
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Training - infraAceOps</title>
+  <title>Training | infraAceOps - DevOps Masterclass</title>
   <link rel="stylesheet" href="styles.css">
   <style>
-    body { background-image: url('assets/bg.jpg'); background-size:cover; background-position:center; background-repeat:no-repeat; background-attachment:fixed }
-    @media (max-width:900px){ body{ background-attachment:scroll } }
-    .nav .links a, .nav .links a strong { color: #ffffff !important; }
-    .nav .links a:hover { color: #e6f9fb !important; }
-  /* Flyer-specific styles (scoped to training page) */
-  /* Make flyer container slightly larger to avoid clipping/edge issues */
-  .flyer-wrap { width:960px; height:560px; max-width:100%; margin:0 auto; display:block; box-sizing:border-box; }
-  .flyer-card { box-shadow:0 10px 30px rgba(2,6,23,.14); border-radius:14px; overflow:hidden; background:linear-gradient(180deg,#0f5f99 0%, #0b4f80 100%); color:#fff; height:100%; display:flex; }
-  .flyer-grid { display:grid; grid-template-columns: 1fr 460px; gap:24px; padding:36px; align-items:start; box-sizing:border-box; width:100%; }
-  .flyer-left { padding-right:10px; }
-  /* Avatar: force a square container and make the image a perfect circle */
-  .avatar { width:110px; height:110px; min-width:110px; min-height:110px; border-radius:50%; overflow:hidden; border:3px solid rgba(255,255,255,.18); display:inline-block; flex:0 0 110px; }
-  .avatar img { width:110px; height:110px; object-fit:cover; display:block; border-radius:50%; }
-  .brand-by { display:inline-block; margin-left:12px; vertical-align:middle; }
-  .tagline { font-size:12px; letter-spacing:.08em; font-weight:700; color:#d9f0ff; }
-  .flyer-title { font-size:42px; line-height:1.03; font-weight:900; margin:6px 0 4px; color:#fff; letter-spacing:0.6px; text-transform:none; text-shadow:0 4px 18px rgba(2,6,23,.25); }
-  .flyer-sub { font-size:15px; color:#e6f9fb; margin-bottom:12px; }
-  .badge { display:inline-block; background:#ffcf54; color:#0b2d4e; padding:6px 10px; border-radius:8px; font-weight:800; margin-bottom:10px; }
-  .highlights { margin:12px 0 14px; }
-  .highlights li { margin:6px 0; color:#fff; }
-  .schedule { background:rgba(255,255,255,.06); padding:10px; border-radius:8px; margin-top:8px; font-size:13px; }
-  .flyer-right { padding:22px 18px; background:linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.01)); border-radius:8px; height:fit-content; }
-  .price-row { display:flex; align-items:center; gap:10px; margin-bottom:14px; }
-  .old-price { text-decoration:line-through; color:#cbd5e1; }
-  .new-price { font-size:26px; color:#84e1a3; font-weight:800; }
-  .discount { color:#ffc9b3; background:rgba(255,69,58,.08); padding:6px 8px; border-radius:8px; font-weight:700; }
-  .cta { display:inline-block; margin-top:8px; background:#16a34a; color:#fff; padding:10px 14px; border-radius:10px; font-weight:800; text-decoration:none; }
-  .meta { font-size:13px; color:rgba(255,255,255,.85); margin-top:10px; }
-  .seats { display:inline-block; background:#e8f3ff; color:#0b2d4e; padding:6px 10px; border-radius:8px; font-weight:800; margin-top:10px; }
-  @media (max-width:980px){ .flyer-grid { grid-template-columns: 1fr; padding:18px; } .flyer-right{ margin-top:8px } .flyer-title{ font-size:32px } }
-  /* Page title should inherit container color (no band) */
-  .page-title { display:block; color:#ffffff; background:transparent; padding:0; border-radius:0; box-shadow:none; margin-bottom:18px; font-size:28px; }
-  @media (max-width:600px){ .page-title{ font-size:20px } }
+    .training-hero {
+      background: linear-gradient(180deg, rgba(3, 7, 18, 0.5) 0%, var(--bg) 100%), url('assets/bg.jpg');
+      background-size: cover;
+      background-position: center;
+      padding: 120px 0 60px;
+      text-align: center;
+    }
+
+    .flyer-container {
+      margin-top: -100px;
+      margin-bottom: 100px;
+    }
+
+    .flyer-card {
+      background: rgba(17, 24, 39, 0.8);
+      backdrop-filter: blur(20px);
+      border: 1px solid var(--border);
+      border-radius: 32px;
+      overflow: hidden;
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      box-shadow: 0 24px 48px rgba(0, 0, 0, 0.4);
+    }
+
+    .flyer-body {
+      padding: 60px;
+    }
+
+    .flyer-sidebar {
+      padding: 60px;
+      background: var(--glass);
+      border-left: 1px solid var(--border);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      text-align: center;
+    }
+
+    .instructor {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      margin-bottom: 32px;
+    }
+
+    .instructor img {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      border: 3px solid var(--primary);
+      object-fit: cover;
+    }
+
+    .price-tag {
+      margin: 24px 0;
+    }
+
+    .old-price {
+      text-decoration: line-through;
+      color: var(--text-muted);
+      font-size: 20px;
+    }
+
+    .new-price {
+      font-size: 48px;
+      font-weight: 800;
+      color: #10b981;
+      display: block;
+    }
+
+    .badge-promo {
+      background: #f59e0b;
+      color: #000;
+      padding: 4px 12px;
+      border-radius: 99px;
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    .highlights-list {
+      list-style: none;
+      margin: 32px 0;
+    }
+
+    .highlights-list li {
+      margin-bottom: 12px;
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+    }
+
+    .highlights-list li::before {
+      content: '✓';
+      color: var(--primary);
+      font-weight: 900;
+    }
+
+    @media (max-width: 900px) {
+      .flyer-card {
+        grid-template-columns: 1fr;
+      }
+
+      .flyer-sidebar {
+        border-left: none;
+        border-top: 1px solid var(--border);
+      }
+    }
   </style>
 </head>
+
 <body>
   <header class="site-header">
-    <div class="nav">
-      <a href="https://infraaceops.github.io/infraaceops.com/" class="brand"><img src="assets/logo-white.png" alt="logo" class="logo"/></a>
-      <nav class="links">
-        <a href="https://infraaceops.github.io/infraaceops.com/"><strong>Home</strong></a>
-        <a href="training.html"><strong>Training</strong></a>
+    <div class="container">
+      <nav class="nav">
+        <a href="index.html" class="brand">
+          <img src="assets/logo-white.png" alt="infraAceOps Logo" class="logo" />
+        </a>
+        <div class="links">
+          <a href="index.html">Home</a>
+          <a href="training.html">Training</a>
+          <a href="index.html#services">Services</a>
+          <a href="index.html#contact">Contact</a>
+        </div>
       </nav>
     </div>
   </header>
 
-  <main class="container">
-    <h1 class="page-title">DevOps Masterclass - From Zero to Multi-Cloud Hero</h1>
+  <main>
+    <section class="training-hero">
+      <div class="container">
+        <h1 style="font-size: 40px; margin-bottom: 20px;">Master the Cloud Ecosystem</h1>
+        <p class="muted">Hands-on experience with production-grade workflows.</p>
+      </div>
+    </section>
 
-    <!-- <section class="course">
-      <div class="course-grid">
-        <div>
-          <h2>Boost Your DevOps with AI - Short Course</h2>
-          <p class="muted">Comprehensive training covering development and operations.</p>
-
-          <p>Price:
-            <span style="text-decoration: line-through; color: gray; margin-right:8px;">PKR 60,000</span>
-            <span style="font-weight: bold; color: #16a34a; margin-right:8px;">PKR 50,000</span>
-            <span style="color: red;">(17% OFF)</span>
-          </p>
-          <div style="height:8px"></div>
-          <a id="btn-enroll" class="btn primary" href="https://forms.gle/h6wWxfXZXDMR8sKh8" target="_blank" rel="noopener">Enroll now</a>
-           <p id="enroll-status" class="muted"></p>
-         </div>
-       </div>
-     </section> -->
-
-    <section class="flyer">
-      <div class="flyer-wrap">
-        <div class="flyer-card">
-          <div class="flyer-grid">
-            <div class="flyer-left">
-              <div style="display:flex; align-items:center;">
-                <div class="avatar"><img src="assets/me.png" alt="Instructor" style="width:100%;height:100%;object-fit:cover;display:block"/></div>
-                <div class="brand-by">
-                  <div class="tagline">Intensive Short DevOps Course</div>
-                  <div style="font-weight:700; color:#008AF1; margin-top:6px;">By <strong>Syed Shadab Hussain Shah</strong></div>
-                </div>
-              </div>
-
-              <h1 class="flyer-title">DevOps Masterclass<br/><span style="font-size:18px; font-weight:700; color:#d9f0ff;">From Zero to Multi-Cloud Hero</span></h1>
-              <p class="flyer-sub">An immersive, hands-on masterclass covering core DevOps, cloud-native patterns, CI/CD, infra-as-code, monitoring, and AI-accelerated workflows — practical labs and real-world pipelines.</p>
-
-              <div class="badge"><a class="cta" href="https://forms.gle/ncZBVSu1vqRCudQS6" target="_blank" rel="noopener">ENROLL NOW</a></div>
-              <ul class="highlights">
-                <li>A Comprehensive, Step-by-Step Guide for Learning DevOps by leveraging AI Tools to Advance Your DevOps Career with Practical, Hands-On Exercises and Projects</li>
-              </ul>
-
-              <div class="schedule">
-                <strong>Schedule</strong>
-                <div>• 3 Days a Week — Friday to Sunday</div>
-                <div>• Timings: 8:30 AM to 10:00 AM (Pakistan Standard Time)</div>
-                <div>• Duration: 1.5 hours per day</div>
-              </div>
+    <section class="flyer-container container">
+      <div class="flyer-card">
+        <div class="flyer-body">
+          <div class="instructor">
+            <img src="assets/me.png" alt="Syed Shadab">
+            <div>
+              <p
+                style="text-transform: uppercase; letter-spacing: 2px; font-size: 12px; color: var(--primary); font-weight: 700;">
+                Instructor led</p>
+              <h3 style="font-size: 20px;">Syed Shadab Hussain Shah</h3>
             </div>
+          </div>
 
-            <aside class="flyer-right">
-              <div style="text-align:right"> 
-                <div class="price-row">
-                  <div class="old-price">PKR 80,000</div>
-                  <div class="new-price">Free</div>
-                  <div class="discount">100% OFF</div>
-                </div>
-                <a class="cta" href="https://forms.gle/ncZBVSu1vqRCudQS6" target="_blank" rel="noopener">ENROLL NOW</a>
-                <div class="meta">Limited seats. Manual verification required after payment proof upload.</div>
-                <div class="seats">LIMITED SEATS AVAILABLE</div>
-                <div style="margin-top:14px; font-size:13px; color:rgba(255,255,255,.85)">
-                  <strong>Live sessions:</strong>
-                  <div>1 hours & 30 minutes per day — last 3 days of a week</div>
-                  <div style="margin-top:8px;">Duration: <strong>3 WEEKS</strong></div>
-                </div>
-              </div>
-            </aside>
+          <h2 style="font-size: 48px; line-height: 1.1; margin-bottom: 24px;">DevOps Masterclass: Zero to Multi-Cloud
+            Hero</h2>
+          <p style="font-size: 18px; color: var(--text-muted);">An immersive, hands-on masterclass covering core DevOps,
+            cloud-native patterns, CI/CD, infra-as-code, and AI-accelerated workflows.</p>
+
+          <ul class="highlights-list">
+            <li>Practical labs with real-world multi-cloud pipelines.</li>
+            <li>In-depth Terraform & Kubernetes orchestration.</li>
+            <li>AI-driven development and operations workflows.</li>
+            <li>3 Weeks Intensive Training (Fri - Sun).</li>
+          </ul>
+
+          <div style="background: var(--glass); padding: 24px; border-radius: 16px;">
+            <p style="font-weight: 600; margin-bottom: 8px;">Schedule:</p>
+            <p class="muted">• Fri to Sun | 8:30 AM - 10:00 AM (PKT)</p>
+          </div>
+        </div>
+
+        <div class="flyer-sidebar">
+          <div class="price-tag">
+            <span class="old-price">PKR 80,000</span>
+            <span class="new-price">FREE <span class="badge-promo">100% OFF</span></span>
+          </div>
+          <a href="https://forms.gle/ncZBVSu1vqRCudQS6" class="btn btn-primary"
+            style="width: 100%; justify-content: center; margin-bottom: 16px;" target="_blank">Enroll via Form</a>
+          <p class="muted" style="margin-bottom: 20px;">OR</p>
+          <a href="https://wa.me/923168331433?text=Hi!%20I%20want%20to%20enroll%20in%20the%20DevOps%20Masterclass."
+            class="btn btn-outline" style="width: 100%; justify-content: center; border-color: #25d366; color: #25d366;"
+            target="_blank">Order/Chat on WhatsApp</a>
+
+          <div style="margin-top: 40px; text-align: left; font-size: 13px; color: var(--text-muted);">
+            <p><strong>Note:</strong> Limited seats available. Manual verification required after enrollment.</p>
           </div>
         </div>
       </div>
     </section>
-
-    <footer>
-      <p class="muted">All rights reserved @2025</p>
-    </footer>
   </main>
+
+  <footer>
+    <div class="container">
+      <p>&copy; 2025 infraAceOps. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <a href="https://wa.me/923168331433" class="whatsapp-float" target="_blank">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
+  </a>
 
   <script type="module" src="training.js"></script>
 </body>
+
 </html>

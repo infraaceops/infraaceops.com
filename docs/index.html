@@ -1,103 +1,170 @@
 <!doctype html>
 <html lang="en">
+
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>infraAceOps</title>
+  <title>infraAceOps | Cloud & DevOps Excellence</title>
+  <meta name="description"
+    content="Redefining Cloud Infrastructure and DevOps Excellence. Real-world training and expert consulting.">
   <link rel="stylesheet" href="styles.css">
 
-  <!-- Ensure nav links are white on the dark background -->
-  <style>
-    .nav .links a, .nav .links a strong { color: #ffffff !important; }
-    .nav .links a:hover { color: #e6f9fb !important; }
-  </style>
-
-  <!-- Page background image (assets/bg.jpg) -->
-  <style>
-    body {
-      background-image: url('assets/bg.jpg');
-      background-size: cover;
-      background-position: center;
-      background-repeat: no-repeat;
-      background-attachment: fixed;
-    }
-    @media (max-width: 900px) { body { background-attachment: scroll; } }
-  </style>
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="assets/logo-white.png">
 
   <!-- Redirect infraaceops.github.io root to /infraaceops.com/ -->
   <script>
-    (function(){
-      try{
+    (function () {
+      try {
         const host = location.hostname;
         const pathname = location.pathname;
-        if(host === 'infraaceops.github.io' && (pathname === '/' || pathname === '')){
-          // use replace so back button doesn't return to this redirect page
+        if (host === 'infraaceops.github.io' && (pathname === '/' || pathname === '')) {
           location.replace('/infraaceops.com/');
         }
-      }catch(e){ /* ignore */ }
+      } catch (e) { /* ignore */ }
     })();
   </script>
 </head>
+
 <body>
   <header class="site-header">
-    <div class="nav">
-      <a href="https://infraaceops.github.io/infraaceops.com/" class="brand"><img src="assets/logo-white.png" alt="logo" class="logo"/></a>
-      <nav class="links">
-        <a href="https://infraaceops.github.io/infraaceops.com/"><strong>Home</strong></a>
-        <a href="training.html"><strong>Training</strong></a>
+    <div class="container">
+      <nav class="nav">
+        <a href="index.html" class="brand">
+          <img src="assets/logo-white.png" alt="infraAceOps Logo" class="logo" />
+        </a>
+        <div class="links">
+          <a href="index.html">Home</a>
+          <a href="training.html">Training</a>
+          <a href="#services">Services</a>
+          <a href="#contact">Contact</a>
+        </div>
       </nav>
     </div>
   </header>
 
-  <!-- New hero section inspired by Eurus Technologies site; uses CSS background only -->
-  <section class="hero" aria-hidden="false">
-    <div class="hero-inner left">
-      <!-- removed centered hero logo to avoid large watermark in middle -->
-  <h1>Embrace The Future Of Cloud Computing</h1>
-  <p class="muted">Upskill with practical DevOps training and real-world labs.</p>
-  <p style="margin-left:0"><a class="btn primary" href="training.html">View Training & Enroll</a></p>
-      <!-- small logos row removed to keep hero clean -->
-    </div>
-  </section>
-
-  <main class="container">
-    <h1>Login </h1>
-
-    <section id="auth-section">
-      <div id="signed-out">
-        <input id="email" type="email" placeholder="syed.shadab@example.com" />
-        <button id="btn-signin">Send magic link</button>
-        <button id="btn-skip">Continue without login (local only)</button>
-        <p class="muted">Using email magic links (Supabase). Check your inbox after clicking "Send".</p>
-      </div>
-      <div id="signed-in" class="hidden">
-        <p>Signed in as <span id="user-email"></span></p>
-        <button id="btn-signout">Sign out</button>
+  <main>
+    <section class="hero">
+      <div class="container">
+        <div class="hero-content">
+          <h1>Accelerate Your Journey to the Cloud</h1>
+          <p>We empower businesses and engineers with high-performance DevOps strategies, cloud-native architectures,
+            and immersive masterclasses.</p>
+          <div class="hero-actions">
+            <a href="training.html" class="btn btn-primary">Join Masterclass</a>
+            <a href="#services" class="btn btn-outline">Explore Services</a>
+          </div>
+        </div>
       </div>
     </section>
 
-    <form id="profile-form" class="hidden">
-      <label>Name<input id="name" /></label>
-      <label>Place of birth<input id="place" /></label>
-      <label>Date of birth<input id="birth" type="date" /></label>
-      <label>Phone<input id="phone" type="tel" /></label>
-      <label>Education<textarea id="education"></textarea></label>
-      <label>Past experience<textarea id="experience"></textarea></label>
-      <label>Profession<input id="profession" /></label>
-
-      <div class="actions">
-        <button id="btn-save" type="button">Save profile</button>
-        <button id="btn-load" type="button">Load profile</button>
+    <section class="stats">
+      <div class="container">
+        <div class="stats-grid">
+          <div class="stat-item">
+            <h3>55+</h3>
+            <p>Clients Served</p>
+          </div>
+          <div class="stat-item">
+            <h3>220+</h3>
+            <p>Projects Completed</p>
+          </div>
+          <div class="stat-item">
+            <h3>1500+</h3>
+            <p>Engineers Trained</p>
+          </div>
+          <div class="stat-item">
+            <h3>24/7</h3>
+            <p>Support Available</p>
+          </div>
+        </div>
       </div>
+    </section>
 
-      <p id="status" class="muted"></p>
-    </form>
+    <section id="services" class="section">
+      <div class="container">
+        <div class="section-header">
+          <h2>Our Expertise</h2>
+          <p class="muted">Tailored solutions for modern infrastructure challenges.</p>
+        </div>
+        <div class="grid">
+          <div class="card">
+            <h3>Cloud Migration</h3>
+            <p>Seamlessly transition your legacy systems to AWS, Azure, or GCP with zero downtime and optimized
+              performance.</p>
+          </div>
+          <div class="card">
+            <h3>DevOps Automation</h3>
+            <p>Automate your CI/CD pipelines, Infrastructure as Code (Terraform), and configuration management.</p>
+          </div>
+          <div class="card">
+            <h3>Kubernetes & Docker</h3>
+            <p>Scale your applications with production-grade container orchestration and microservices architecture.</p>
+          </div>
+          <div class="card">
+            <h3>SRE & Monitoring</h3>
+            <p>Ensure 99.9% uptime with pro-active monitoring, incident response, and performance tuning.</p>
+          </div>
+          <div class="card">
+            <h3>Agentic AI</h3>
+            <p>Leverage the power of AI Agents to automate complex operations and development tasks.</p>
+          </div>
+          <div class="card">
+            <h3>Cyber Security</h3>
+            <p>Secure your cloud infrastructure with advanced IAM, vulnerability assessments, and compliance audits.</p>
+          </div>
+        </div>
+      </div>
+    </section>
 
-    <footer>
-      <p class="muted">All rights Reserved @</p>
-    </footer>
+    <section class="section" style="background: var(--glass);">
+      <div class="container">
+        <div class="section-header">
+          <h2>Trusted by Industry Leaders</h2>
+        </div>
+        <div class="clients-cloud">
+          <!-- Placeholder logos or SVGs representing diverse industries -->
+          <img src="https://upload.wikimedia.org/wikipedia/commons/9/93/Amazon_Web_Services_Logo.svg" alt="AWS"
+            class="client-logo" style="filter: brightness(0) invert(1);">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/a/a8/Microsoft_Azure_Logo.svg" alt="Azure"
+            class="client-logo">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Google_Cloud_Logo.svg" alt="GCP"
+            class="client-logo">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/3/39/Kubernetes_logo_without_workmark.svg"
+            alt="Kubernetes" class="client-logo">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/0/04/Terraform_Logo.svg" alt="Terraform"
+            class="client-logo">
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="section">
+      <div class="container" style="text-align: center;">
+        <div class="section-header">
+          <h2>Ready to Scale?</h2>
+          <p class="muted">Get in touch for consultations or training inquiries.</p>
+        </div>
+        <div class="hero-actions" style="justify-content: center;">
+          <a href="https://wa.me/923168331433?text=Hi%20infraAceOps,%20I'm%20interested%20in%20your%20services!"
+            class="btn btn-primary" target="_blank">Order via WhatsApp</a>
+          <a href="mailto:infraaceops@gmail.com?subject=Inquiry from Website" class="btn btn-outline">Email Us</a>
+        </div>
+      </div>
+    </section>
   </main>
+
+  <footer>
+    <div class="container">
+      <p>&copy; 2025 infraAceOps. All rights reserved.</p>
+      <p class="muted" style="font-size: 12px; margin-top: 10px;">Cloud Consulting | Training | Managed Services</p>
+    </div>
+  </footer>
+
+  <a href="https://wa.me/923168331433" class="whatsapp-float" target="_blank" title="Chat on WhatsApp">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
+  </a>
 
   <script type="module" src="main.js"></script>
 </body>
+
 </html>
