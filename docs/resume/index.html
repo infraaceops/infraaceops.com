@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Me | Shadab S. - infraAceOps</title>
+    <link rel="stylesheet" href="../styles.css">
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="../assets/logo-white.png">
+    <style>
+        :root {
+            --primary: #3b82f6;
+            --primary-glow: rgba(59, 130, 246, 0.5);
+            --secondary: #06b6d4;
+            --bg: #030712;
+            --card-bg: rgba(17, 24, 39, 0.7);
+            --text: #f9fafb;
+            --text-muted: #9ca3af;
+            --border: rgba(255, 255, 255, 0.1);
+            --glass: rgba(255, 255, 255, 0.03);
+            --accent: var(--primary);
+            --accent-light: rgba(59, 130, 246, 0.1);
+        }
+
+        body {
+            padding-top: 100px;
+            background-attachment: fixed;
+        }
+
+        .resume-container {
+            max-width: 1100px;
+            margin: 40px auto;
+            background: var(--card-bg);
+            display: flex;
+            min-height: 1100px;
+            backdrop-filter: blur(12px);
+            border: 1px solid var(--border);
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 0 24px 48px rgba(0, 0, 0, 0.4);
+        }
+
+        /* Sidebar Column */
+        .sidebar {
+            width: 320px;
+            background: var(--glass);
+            border-right: 1px solid var(--border);
+            padding: 40px 30px;
+            display: flex;
+            flex-direction: column;
+            gap: 35px;
+        }
+
+        .profile-img {
+            width: 160px;
+            height: 160px;
+            border-radius: 24px;
+            border: 2px solid var(--primary);
+            box-shadow: 0 0 20px var(--primary-glow);
+            margin-bottom: 20px;
+            object-fit: cover;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .sidebar h3 {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--primary);
+            font-weight: 800;
+            margin-bottom: 15px;
+        }
+
+        .contact-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .contact-item {
+            font-size: 0.85rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--text-muted);
+        }
+
+        .skill-group {
+            margin-bottom: 15px;
+        }
+
+        .skill-group h4 {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            margin-bottom: 8px;
+            font-weight: 700;
+        }
+
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+        }
+
+        .tag {
+            background: var(--glass);
+            border: 1px solid var(--border);
+            padding: 4px 10px;
+            border-radius: 6px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            color: var(--text);
+            transition: all 0.3s ease;
+        }
+
+        .tag:hover {
+            border-color: var(--primary);
+            background: var(--accent-light);
+        }
+
+        /* Main Content Column */
+        .main {
+            flex: 1;
+            padding: 50px 60px;
+        }
+
+        .resume-header {
+            margin-bottom: 40px;
+        }
+
+        .resume-header h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            color: var(--text);
+            letter-spacing: -1px;
+            line-height: 1;
+            background: linear-gradient(135deg, #fff 0%, #94a3b8 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .resume-header p {
+            font-size: 1.1rem;
+            color: var(--primary);
+            font-weight: 600;
+            margin-top: 10px;
+        }
+
+        .about-box {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            margin-bottom: 40px;
+            padding: 24px;
+            background: var(--glass);
+            border-radius: 16px;
+            border-left: 4px solid var(--primary);
+            font-style: italic;
+            line-height: 1.7;
+        }
+
+        .resume-section {
+            margin-bottom: 40px;
+        }
+
+        .section-title {
+            font-size: 1.25rem;
+            font-weight: 800;
+            color: var(--text);
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .section-title::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: var(--border);
+        }
+
+        .timeline {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        .timeline-item {
+            position: relative;
+            padding-left: 25px;
+            border-left: 1px solid var(--border);
+            padding-bottom: 15px;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -5px;
+            top: 0;
+            width: 9px;
+            height: 9px;
+            border-radius: 50%;
+            background: var(--primary);
+            box-shadow: 0 0 10px var(--primary);
+        }
+
+        .timeline-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 10px;
+        }
+
+        .role {
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: var(--text);
+        }
+
+        .company {
+            color: var(--primary);
+            font-weight: 600;
+            font-size: 1rem;
+        }
+
+        .date {
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--text-muted);
+            background: var(--glass);
+            padding: 4px 12px;
+            border-radius: 20px;
+            border: 1px solid var(--border);
+        }
+
+        .description {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            list-style: none;
+        }
+
+        .description li {
+            margin-bottom: 6px;
+            position: relative;
+            padding-left: 18px;
+        }
+
+        .description li::before {
+            content: "→";
+            position: absolute;
+            left: 0;
+            color: var(--primary);
+            font-weight: bold;
+        }
+
+        .project-card {
+            background: var(--glass);
+            border: 1px solid var(--border);
+            padding: 24px;
+            border-radius: 16px;
+            margin-bottom: 16px;
+            transition: all 0.3s ease;
+        }
+
+        .project-card:hover {
+            border-color: var(--primary);
+            background: rgba(255, 255, 255, 0.05);
+            transform: translateY(-4px);
+        }
+
+        .project-card strong {
+            display: block;
+            font-size: 1.1rem;
+            color: var(--text);
+            margin-bottom: 8px;
+        }
+
+        .tech-pill {
+            font-size: 0.65rem;
+            color: var(--primary);
+            font-weight: 700;
+            text-transform: uppercase;
+            background: var(--accent-light);
+            padding: 4px 10px;
+            border-radius: 6px;
+            margin-right: 6px;
+            border: 1px solid rgba(59, 130, 246, 0.2);
+        }
+
+        @media (max-width: 900px) {
+            .resume-container {
+                flex-direction: column;
+                margin: 20px;
+            }
+
+            .sidebar {
+                width: 100%;
+                border-right: none;
+                border-bottom: 1px solid var(--border);
+            }
+
+            .main {
+                padding: 30px;
+            }
+
+            .resume-header h1 {
+                font-size: 2.5rem;
+            }
+        }
+
+        @media print {
+            body {
+                padding: 0;
+                background: white;
+                color: black;
+            }
+
+            .resume-container {
+                box-shadow: none;
+                width: 100%;
+                border: none;
+                background: white;
+            }
+
+            .sidebar {
+                background: #f8fafc;
+                border-right: 1px solid #e2e8f0;
+            }
+
+            .resume-header h1 {
+                -webkit-text-fill-color: black;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header class="site-header">
+        <div class="container">
+            <nav class="nav">
+                <a href="../index.html" class="brand">
+                    <img src="../assets/logo-white.png" alt="infraAceOps Logo" class="logo" />
+                </a>
+                <div class="links">
+                    <a href="../index.html">Home</a>
+                    <a href="../training.html">Training</a>
+                    <a href="index.html">About Me</a>
+                    <a href="../index.html#services">Services</a>
+                    <a href="../index.html#contact">Contact</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <div class="resume-container">
+            <!-- SIDEBAR -->
+            <aside class="sidebar">
+                <img src="../assets/profile.jpg" alt="Shadab S." class="profile-img">
+
+                <div>
+                    <h3>Connect</h3>
+                    <ul class="contact-list">
+                        <li class="contact-item">📍 Haripur, Pakistan</li>
+                        <li class="contact-item">🔗 linkedin.com/in/shadab-s-519299209</li>
+                        <li class="contact-item">🌐 infraaceops.com</li>
+                        <li class="contact-item">👨‍💻 github.com/infraaceops</li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3>Core Arsenal</h3>
+                    <div class="skill-group">
+                        <h4>Cloud Infrastructure</h4>
+                        <div class="tags">
+                            <span class="tag">AWS EKS/EC2</span>
+                            <span class="tag">Terraform</span>
+                            <span class="tag">Kops</span>
+                            <span class="tag">VPC Networking</span>
+                        </div>
+                    </div>
+                    <div class="skill-group">
+                        <h4>DevOps & CI/CD</h4>
+                        <div class="tags">
+                            <span class="tag">ArgoCD / FluxCD</span>
+                            <span class="tag">Azure Pipelines</span>
+                            <span class="tag">Helm</span>
+                            <span class="tag">CI/CD Pipelines</span>
+                        </div>
+                    </div>
+                    <div class="skill-group">
+                        <h4>Dev & BigData</h4>
+                        <div class="tags">
+                            <span class="tag">Linux</span>
+                            <span class="tag">Docker/Packer</span>
+                            <span class="tag">Hadoop/CDP</span>
+                            <span class="tag">Node.js (Electron)</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <h3>Education</h3>
+                    <div style="font-size: 0.85rem;">
+                        <strong style="color:var(--text)">BS Software Engineering</strong><br>
+                        <span style="color:var(--primary)">Abbotabad University</span><br>
+                        <span style="color:var(--text-muted)">2017 - 2021 | GPA: 3.43</span>
+                    </div>
+                </div>
+
+                <div>
+                    <h3>Certifications</h3>
+                    <div style="font-size: 0.8rem;">
+                        <strong style="color:var(--text)">Certified in CyberSecurity</strong><br>
+                        <span style="color: var(--text-muted)">ISC2 (License: 1887570)</span><br>
+                        <span style="color:var(--text-muted)">Expires: Dec 2027</span>
+                    </div>
+                </div>
+            </aside>
+
+            <!-- MAIN -->
+            <div class="main">
+                <header class="resume-header">
+                    <h1>SHADAB S.</h1>
+                    <p>Co-Founder of infraAceOps | Expert DevOps Engineer</p>
+                </header>
+
+                <div class="about-box">
+                    "Results-driven DevOps Engineer with 7+ years of experience in building scalable, secure cloud
+                    infrastructures.
+                    Expert in CI/CD pipelines, Kubernetes, Docker, and GitOps for fast, reliable deployments.
+                    Proficient in scripting and Infrastructure-as-Code (Terraform, CloudFormation) to automate and
+                    optimize
+                    workflows.
+                    Bridges development and operations to deliver high-performing, resilient systems.
+                    Passionate about innovation, efficiency, and driving continuous improvement across DevOps practices"
+                </div>
+
+                <!-- Experience -->
+                <div class="resume-section">
+                    <h2 class="section-title">Experience</h2>
+
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <div class="timeline-header">
+                                <div>
+                                    <span class="role">Co-Founder</span><br>
+                                    <span class="company">infraAceOps</span>
+                                </div>
+                                <span class="date">Aug 2025 - Present</span>
+                            </div>
+                            <ul class="description">
+                                <li>Pioneering a startup focused on **Cloud & DevOps Excellence**.</li>
+                                <li>Building infraAceOps in public, offering trainings and industrial internships.</li>
+                                <li>Driving the vision for production-grade setups and real-world infrastructure
+                                    learning.</li>
+                            </ul>
+                        </div>
+
+                        <div class="timeline-item">
+                            <div class="timeline-header">
+                                <div>
+                                    <span class="role">Platform Engineer (Contract)</span><br>
+                                    <span class="company">LookHub</span>
+                                </div>
+                                <span class="date">Apr 2025 - Aug 2025</span>
+                            </div>
+                            <ul class="description">
+                                <li>Architected automation workflows using **n8n** and managed **F5 BIG-IP**
+                                    infrastructure.</li>
+                                <li>Specialized in bridging development and operations on a remote global team.</li>
+                            </ul>
+                        </div>
+
+                        <div class="timeline-item">
+                            <div class="timeline-header">
+                                <div>
+                                    <span class="role">DevOps Engineer</span><br>
+                                    <span class="company">Eurus Technologies</span>
+                                </div>
+                                <span class="date">Jul 2022 - Apr 2025</span>
+                            </div>
+                            <ul class="description">
+                                <li>Engineered complex AWS environments using **CloudFormation, EKS, and CodePipeline**.
+                                </li>
+                                <li>Implemented GitOps workflows with **ArgoCD** and **FluxCD** for Kubernetes
+                                    orchestration.</li>
+                                <li>Automated secure infrastructure with **Packer, Helm**, and **Azure DevOps
+                                    Pipelines**.</li>
+                                <li>Secured enterprise networks (VPC, IAM, S3) and managed RDS/DynamoDB databases.</li>
+                            </ul>
+                        </div>
+
+                        <div class="timeline-item">
+                            <div class="timeline-header">
+                                <div>
+                                    <span class="role">DevOps Consultant</span><br>
+                                    <span class="company">Sarmaaya Financials</span>
+                                </div>
+                                <span class="date">May 2021 - Jul 2022</span>
+                            </div>
+                            <ul class="description">
+                                <li>Integrated DevOps methodologies into **Big Data** ecosystems.</li>
+                                <li>Led **Hadoop Administration** tasks and optimized data processing clusters.</li>
+                            </ul>
+                        </div>
+
+                        <div class="timeline-item">
+                            <div class="timeline-header">
+                                <div>
+                                    <span class="role">BigData Engineer (Part-time)</span><br>
+                                    <span class="company">abcData (Pvt) Ltd.</span>
+                                </div>
+                                <span class="date">Feb 2020 - May 2021</span>
+                            </div>
+                            <ul class="description">
+                                <li>Executed live data migration from **HDP to CDP (Cloudera Data Platform)**.</li>
+                                <li>Mastered enterprise-level Big Data tools and migration strategies.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Focus Projects -->
+                <div class="resume-section">
+                    <h2 class="section-title">Featured Projects</h2>
+
+                    <div class="project-card">
+                        <strong>Maktab Shop - Desktop ERP</strong>
+                        <p style="font-size: 0.85rem; color:var(--text-muted); margin-top:5px;">
+                            Architected and developed a full-scale Windows desktop ERP system using **Electron** and
+                            **SQLite**. Implemented IPC-based data handling, automated PDF generation, and OneDrive
+                            cloud
+                            synchronization.
+                        </p>
+                        <div style="margin-top:12px;">
+                            <span class="tech-pill">Electron</span> <span class="tech-pill">Node.js</span> <span
+                                class="tech-pill">SQLite</span> <span class="tech-pill">IPC Logic</span>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <strong>AI-Driven Web Architecture</strong>
+                        <p style="font-size: 0.85rem; color:var(--text-muted); margin-top:5px;">
+                            Engineered a zero-server-cost deployment stack using **GitHub Pages** and **Cloudflare**.
+                            Leveraged AI-powered rapid prototyping to go from concept to production-ready website.
+                        </p>
+                        <div style="margin-top:12px;">
+                            <span class="tech-pill">GitHub Pages</span> <span class="tech-pill">Cloudflare</span> <span
+                                class="tech-pill">CI/CD</span> <span class="tech-pill">AI Automation</span>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <strong>Private EKS Cluster Architecture</strong>
+                        <p style="font-size: 0.85rem; color:var(--text-muted); margin-top:5px;">
+                            Architecting a highly secure, fully isolated AWS EKS Setup (No IGW/NAT) using **Terraform**
+                            for
+                            enterprise data sovereignty.
+                        </p>
+                        <div style="margin-top:12px;">
+                            <span class="tech-pill">Terraform</span> <span class="tech-pill">HashiCorp</span> <span
+                                class="tech-pill">EKS</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div
+                    style="text-align: center; margin-top: 40px; font-size: 0.75rem; color: var(--text-muted); font-weight: 600;">
+                    Building in Public | Cloud Infrastructure | Security First
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer style="margin-top: 40px; padding: 40px 0; border-top: 1px solid var(--border); text-align: center;">
+        <div class="container">
+            <p style="color: var(--text-muted);">&copy; 2025 infraAceOps. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <a href="https://wa.me/923168331433" class="whatsapp-float" target="_blank">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
+    </a>
+
+</body>
+
+</html>
