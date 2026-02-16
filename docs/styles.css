@@ -43,6 +43,47 @@ body {
     animation: fadeIn 0.8s ease forwards;
 }
 
+@keyframes float {
+    0% {
+        transform: translateY(0px);
+    }
+
+    50% {
+        transform: translateY(-20px);
+    }
+
+    100% {
+        transform: translateY(0px);
+    }
+}
+
+.floating {
+    animation: float 6s ease-in-out infinite;
+}
+
+.status-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 4px 12px;
+    background: rgba(16, 185, 129, 0.1);
+    color: #10b981;
+    border-radius: 99px;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+}
+
+.status-badge::before {
+    content: '';
+    width: 6px;
+    height: 6px;
+    background: #10b981;
+    border-radius: 50%;
+    box-shadow: 0 0 10px #10b981;
+}
+
 .container {
     max-width: 1200px;
     margin: 0 auto;
@@ -324,243 +365,419 @@ footer p {
     color: var(--text-muted);
 }
 
-/* Projects Section */
+/* Projects Section - Premium Overhaul */
 .projects-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
-    gap: 32px;
+    grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+    gap: 40px;
 }
 
 .project-card {
-    background: var(--card-bg);
+    background: linear-gradient(145deg, rgba(23, 25, 35, 0.8), rgba(10, 11, 19, 0.9));
     border: 1px solid var(--border);
-    border-radius: 24px;
-    padding: 32px;
+    border-radius: 32px;
+    padding: 40px;
     display: flex;
+    flex-direction: column;
     gap: 24px;
-    transition: all 0.3s ease;
+    transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
     position: relative;
     overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.project-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(90deg, transparent, var(--primary), transparent);
+    opacity: 0;
+    transition: opacity 0.3s;
 }
 
 .project-card:hover {
-    transform: translateY(-8px);
-    border-color: var(--primary);
-    background: rgba(17, 24, 39, 0.9);
+    transform: translateY(-15px);
+    border-color: var(--primary-glow);
+    box-shadow: 0 20px 50px rgba(59, 130, 246, 0.15);
+}
+
+.project-card:hover::before {
+    opacity: 1;
 }
 
 .project-icon {
-    font-size: 40px;
-    background: var(--glass);
-    width: 64px;
-    height: 64px;
+    font-size: 48px;
+    background: linear-gradient(135deg, rgba(59, 130, 246, 0.1), transparent);
+    width: 80px;
+    height: 80px;
     display: flex;
     align-items: center;
     justify-content: center;
-    border-radius: 16px;
-    flex-shrink: 0;
+    border-radius: 24px;
+    color: var(--primary);
+    border: 1px solid rgba(59, 130, 246, 0.2);
+    transition: transform 0.5s ease;
+}
+
+.project-card:hover .project-icon {
+    transform: rotateY(360deg);
+    background: var(--primary);
+    color: white;
 }
 
 .project-content h3 {
-    font-size: 22px;
-    margin-bottom: 4px;
+    font-size: 26px;
+    font-weight: 700;
+    margin-bottom: 8px;
+    color: #fff;
 }
 
 .project-type {
-    color: var(--primary);
-    font-size: 14px;
-    font-weight: 600;
+    color: var(--secondary);
+    font-size: 13px;
+    font-weight: 800;
     text-transform: uppercase;
-    letter-spacing: 1px;
-    margin-bottom: 12px;
+    letter-spacing: 2px;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.project-type::before {
+    content: '';
+    width: 12px;
+    height: 2px;
+    background: var(--secondary);
+}
+
+.project-description {
+    color: var(--text-muted);
+    font-size: 16px;
+    line-height: 1.7;
+    margin-bottom: 24px;
 }
 
 .project-tags {
     display: flex;
     flex-wrap: wrap;
-    gap: 8px;
-    margin-top: 20px;
+    gap: 10px;
+    margin-top: auto;
 }
 
 .project-tags span {
-    background: var(--glass);
+    background: rgba(255, 255, 255, 0.03);
     border: 1px solid var(--border);
-    padding: 4px 12px;
-    border-radius: 99px;
-    font-size: 12px;
+    padding: 6px 16px;
+    border-radius: 12px;
+    font-size: 13px;
+    font-weight: 500;
     color: var(--text-muted);
+    transition: all 0.3s;
 }
 
-/* Pricing Section */
+.project-card:hover .project-tags span {
+    border-color: rgba(59, 130, 246, 0.3);
+    color: var(--text);
+}
+
+.project-link {
+    margin-top: 24px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--primary);
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 15px;
+    transition: gap 0.3s;
+}
+
+.project-link:hover {
+    gap: 12px;
+}
+
+/* Pricing Section - Glass & Gradient Reinvention */
 .pricing-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    gap: 32px;
-    align-items: stretch;
+    grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+    gap: 40px;
+    padding: 20px 0;
 }
 
 .pricing-card {
-    background: var(--card-bg);
+    background: rgba(17, 24, 39, 0.6);
+    backdrop-filter: blur(20px);
     border: 1px solid var(--border);
-    padding: 48px;
-    border-radius: 32px;
+    padding: 60px 40px;
+    border-radius: 40px;
     transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    position: relative;
     display: flex;
     flex-direction: column;
-}
-
-.pricing-card:hover {
-    transform: translateY(-12px);
-    border-color: var(--primary);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+    text-align: center;
 }
 
 .pricing-card.featured {
-    border-color: var(--primary);
-    background: rgba(59, 130, 246, 0.05);
-    box-shadow: 0 10px 30px rgba(59, 130, 246, 0.1);
+    border: 2px solid var(--primary);
+    background: linear-gradient(180deg, rgba(59, 130, 246, 0.05) 0%, rgba(17, 24, 39, 0.8) 100%);
+    transform: scale(1.05);
 }
 
-.card-tag {
-    position: absolute;
-    top: 24px;
-    right: 24px;
-    background: var(--primary);
-    color: white;
-    padding: 6px 14px;
-    border-radius: 99px;
-    font-size: 12px;
-    font-weight: 700;
-    text-transform: uppercase;
+.pricing-card:hover {
+    transform: translateY(-20px);
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5);
 }
 
-.card-header h3 {
-    font-size: 28px;
-    margin-bottom: 8px;
+.pricing-card.gold {
+    border-top: 5px solid #f59e0b;
 }
 
-.pricing-card.gold h3 {
+.pricing-card.platinum {
+    border-top: 5px solid #06b6d4;
+}
+
+.pricing-card.diamond {
+    border-top: 5px solid #8b5cf6;
+}
+
+.price-icon {
+    font-size: 40px;
+    margin-bottom: 24px;
+}
+
+.pricing-card.gold .price-icon {
     color: #f59e0b;
 }
 
-.pricing-card.platinum h3 {
+.pricing-card.platinum .price-icon {
     color: #06b6d4;
 }
 
-.pricing-card.diamond h3 {
+.pricing-card.diamond .price-icon {
     color: #8b5cf6;
 }
 
+.card-header h3 {
+    font-size: 32px;
+    font-weight: 800;
+    margin-bottom: 8px;
+    color: #fff;
+}
+
 .price {
-    font-size: 20px;
-    color: var(--text-muted);
-    margin-bottom: 32px;
+    font-size: 18px;
+    color: var(--primary);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 40px;
 }
 
 .features {
     list-style: none;
-    margin-bottom: 40px;
-    flex-grow: 1;
+    margin-bottom: 50px;
+    text-align: left;
 }
 
 .features li {
-    margin-bottom: 16px;
-    padding-left: 28px;
-    position: relative;
+    padding: 12px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
     color: var(--text-muted);
+    font-size: 15px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
 }
 
-.features li::before {
-    content: '✓';
-    position: absolute;
-    left: 0;
-    color: var(--primary);
-    font-weight: 800;
+.features li i {
+    color: #10b981;
 }
 
-/* Roadmap Section */
+/* Roadmap Section - Infographic Timeline */
+.section-header h2 {
+    font-size: 56px;
+    background: linear-gradient(135deg, #fff 30%, var(--primary) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 20px;
+}
+
 .roadmap-container {
-    max-width: 900px;
-    margin: 0 auto;
+    max-width: 1100px;
+    margin: 80px auto;
     position: relative;
+    padding: 40px 0;
+}
+
+/* Background Blobs for Infographic Feel */
+.roadmap-container::before {
+    content: '';
+    position: absolute;
+    top: 10%;
+    left: -100px;
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(circle, var(--primary-glow) 0%, transparent 70%);
+    filter: blur(80px);
+    z-index: 0;
+    opacity: 0.3;
 }
 
 .roadmap-stage {
-    display: flex;
+    display: grid;
+    grid-template-columns: 140px 1fr;
     gap: 40px;
-    margin-bottom: 60px;
+    margin-bottom: 100px;
     position: relative;
+    z-index: 1;
+}
+
+.roadmap-stage:last-child {
+    margin-bottom: 0;
+}
+
+.stage-visual {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.stage-number {
+    width: 80px;
+    height: 80px;
+    background: linear-gradient(45deg, var(--primary), var(--secondary));
+    color: white;
+    border-radius: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 900;
+    font-size: 32px;
+    z-index: 2;
+    box-shadow: 0 15px 35px var(--primary-glow);
+    transform: rotate(10deg);
+    transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.roadmap-stage:hover .stage-number {
+    transform: rotate(0deg) scale(1.1);
+}
+
+.stage-number span {
+    transform: rotate(-10deg);
+}
+
+.roadmap-stage:hover .stage-number span {
+    transform: rotate(0deg);
 }
 
 .roadmap-stage:not(:last-child)::after {
     content: '';
     position: absolute;
-    left: 24px;
-    top: 60px;
-    bottom: -40px;
-    width: 2px;
-    background: linear-gradient(to bottom, var(--primary), transparent);
-}
-
-.stage-number {
-    width: 50px;
-    height: 50px;
-    background: var(--primary);
-    color: white;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: 800;
-    font-size: 20px;
-    flex-shrink: 0;
-    box-shadow: 0 0 20px var(--primary-glow);
+    left: 70px;
+    top: 100px;
+    bottom: -100px;
+    width: 3px;
+    background: linear-gradient(to bottom, var(--primary), var(--secondary), transparent);
+    box-shadow: 0 0 15px var(--primary-glow);
 }
 
 .stage-content {
-    background: var(--glass);
-    padding: 32px;
-    border-radius: 24px;
-    border: 1px solid var(--border);
-    flex-grow: 1;
+    background: rgba(255, 255, 255, 0.02);
+    backdrop-filter: blur(10px);
+    padding: 60px;
+    border-radius: 48px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    transition: all 0.4s ease;
+}
+
+.roadmap-stage:hover .stage-content {
+    background: rgba(255, 255, 255, 0.04);
+    border-color: rgba(59, 130, 246, 0.3);
+    transform: translateX(10px);
 }
 
 .stage-content h3 {
-    font-size: 24px;
-    margin-bottom: 12px;
+    font-size: 36px;
+    margin-bottom: 16px;
+    color: #fff;
+    letter-spacing: -1px;
+}
+
+.stage-subtitle {
+    color: var(--primary);
+    font-weight: 800;
+    text-transform: uppercase;
+    font-size: 14px;
+    letter-spacing: 4px;
+    margin-bottom: 24px;
+    display: block;
 }
 
 .roadmap-list {
-    list-style: none;
-    margin-top: 24px;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 16px;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px;
+    margin-top: 40px;
 }
 
 .roadmap-list li {
-    background: rgba(255, 255, 255, 0.02);
-    padding: 16px;
-    border-radius: 12px;
-    border: 1px solid var(--border);
-    font-size: 14px;
+    background: rgba(255, 255, 255, 0.03);
+    padding: 28px;
+    border-radius: 24px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    transition: all 0.3s;
+    display: flex;
+    flex-direction: column;
+}
+
+.roadmap-list li:hover {
+    background: rgba(59, 130, 246, 0.1);
+    border-color: rgba(59, 130, 246, 0.4);
+    transform: translateY(-5px);
 }
 
 .roadmap-list li strong {
-    color: var(--primary);
+    color: #fff;
+    font-size: 18px;
     display: block;
-    margin-bottom: 4px;
+    margin-bottom: 10px;
 }
 
-.roadmap-list li em {
-    display: block;
-    margin-top: 8px;
-    color: var(--text-muted);
-    font-style: normal;
-    font-size: 13px;
-    border-top: 1px solid var(--border);
-    padding-top: 8px;
+.roadmap-list li i {
+    font-size: 24px;
+    margin-bottom: 16px;
+    color: var(--primary);
+    background: rgba(59, 130, 246, 0.1);
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 14px;
+}
+
+@media (max-width: 992px) {
+    .roadmap-stage {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+
+    .stage-visual {
+        align-items: flex-start;
+    }
+
+    .roadmap-stage:not(:last-child)::after {
+        left: 40px !important;
+        top: 90px;
+        bottom: -60px;
+    }
 }
 
 @media (max-width: 768px) {
@@ -573,6 +790,8 @@ footer p {
     .links {
         margin-top: 16px;
         gap: 16px;
+        flex-wrap: wrap;
+        justify-content: center;
     }
 
     .stats-grid {
@@ -590,5 +809,9 @@ footer p {
 
     .roadmap-stage::after {
         display: none;
+    }
+
+    .pricing-card.featured {
+        transform: scale(1);
     }
 }
