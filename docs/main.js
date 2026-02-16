@@ -28,7 +28,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }, observerOptions);
 
-  document.querySelectorAll('.card, .stat-item').forEach(el => {
+  document.querySelectorAll('.card, .stat-item, .pricing-card, .roadmap-stage, .project-card').forEach(el => {
     observer.observe(el);
   });
 
