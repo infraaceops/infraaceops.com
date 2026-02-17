@@ -711,7 +711,8 @@ footer p {
 }
 
 .stage-subtitle {
-    color: var(--primary);
+    color: #93c5fd;
+    /* Soft Light Blue */
     font-weight: 800;
     text-transform: uppercase;
     font-size: 14px;
