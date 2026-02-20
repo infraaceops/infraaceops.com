@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Me | Shadab S. - infraAceOps</title>
+    <title>About Me | Shadab Shah - infraAceOps</title>
     <link rel="stylesheet" href="../styles.css">
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="../assets/favicon.png">
@@ -196,6 +196,7 @@
             padding-left: 25px;
             border-left: 1px solid var(--border);
             padding-bottom: 15px;
+            break-inside: avoid;
         }
 
         .timeline-item::before {
@@ -266,6 +267,7 @@
             border-radius: 16px;
             margin-bottom: 16px;
             transition: all 0.3s ease;
+            break-inside: avoid;
         }
 
         .project-card:hover {
@@ -315,27 +317,80 @@
         }
 
         @media print {
+            @page {
+                margin: 0;
+            }
+
             body {
                 padding: 0;
+                margin: 0;
                 background: white;
                 color: black;
+            }
+
+            .site-header,
+            .whatsapp-float,
+            .download-btn-container,
+            .tagline,
+            footer {
+                display: none !important;
             }
 
             .resume-container {
                 box-shadow: none;
                 width: 100%;
+                max-width: 100%;
+                margin: 0;
                 border: none;
                 background: white;
+                border-radius: 0;
+                display: flex;
             }
 
             .sidebar {
-                background: #f8fafc;
-                border-right: 1px solid #e2e8f0;
+                background: #f8fafc !important;
+                border-right: 1px solid #e2e8f0 !important;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+                padding: 40px 30px !important;
+            }
+
+            .main {
+                padding: 40px 60px !important;
             }
 
             .resume-header h1 {
                 -webkit-text-fill-color: black;
+                color: black;
             }
+
+            .about-box {
+                background: #f1f5f9 !important;
+                border-left: 4px solid var(--primary) !important;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+
+            .tag,
+            .tech-pill {
+                background: #f1f5f9 !important;
+                border: 1px solid #e2e8f0 !important;
+                color: #1e293b !important;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+
+            .date {
+                background: #f1f5f9 !important;
+                border: 1px solid #e2e8f0 !important;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+        }
+
+        .download-btn-container {
+            text-align: center;
+            margin-bottom: 30px;
         }
     </style>
 </head>
@@ -359,16 +414,29 @@
     </header>
 
     <main class="container">
+        <div class="download-btn-container">
+            <button onclick="window.print()" class="btn btn-primary">
+                <i class="fas fa-file-pdf" style="margin-right: 10px;"></i> Download Resume as PDF
+            </button>
+        </div>
         <div class="resume-container">
             <!-- SIDEBAR -->
             <aside class="sidebar">
-                <img src="../assets/profile.jpg" alt="Shadab S." class="profile-img">
+                <div style="text-align: center; margin-bottom: 20px;">
+                    <img src="../assets/profile.jpg" alt="Shadab Shah" class="profile-img">
+                    <h2
+                        style="font-size: 1.5rem; font-weight: 800; color: var(--text); margin-top: 15px; letter-spacing: -0.5px;">
+                        SHADAB SHAH</h2>
+                    <p
+                        style="font-size: 0.85rem; color: var(--primary); font-weight: 600; text-transform: uppercase; letter-spacing: 1px; margin-top: 5px;">
+                        DevOps Engineer</p>
+                </div>
 
                 <div>
                     <h3>Connect</h3>
                     <ul class="contact-list">
                         <li class="contact-item">📍 Haripur, Pakistan</li>
-                        <li class="contact-item">🔗 linkedin.com/in/shadab-s-519299209</li>
+                        <li class="contact-item">🔗 linkedin.com/in/shadab-shah-519299209</li>
                         <li class="contact-item">🌐 infraaceops.com</li>
                         <li class="contact-item">👨‍💻 github.com/infraaceops</li>
                     </ul>
@@ -427,7 +495,7 @@
             <!-- MAIN -->
             <div class="main">
                 <header class="resume-header">
-                    <h1>SHADAB S.</h1>
+                    <h1>SHADAB SHAH</h1>
                     <p>Co-Founder of infraAceOps | Expert DevOps Engineer</p>
                 </header>
 
@@ -532,28 +600,40 @@
                     <h2 class="section-title">Featured Projects</h2>
 
                     <div class="project-card">
-                        <strong>Maktab Shop - Desktop ERP</strong>
+                        <strong>Vaulti AWS - Serverless DevOps</strong>
                         <p style="font-size: 0.85rem; color:var(--text-muted); margin-top:5px;">
-                            Architected and developed a full-scale Windows desktop ERP system using Electron and
-                            SQLite. Implemented IPC-based data handling, automated PDF generation, and OneDrive
-                            cloud
-                            synchronization.
+                            Architected a total serverless infrastructure using AWS Lambda and GitHub Self-Hosted
+                            Runners on serverless. Integrated Azure serverless components for a robust, cost-effective
+                            cross-cloud DevOps environment.
                         </p>
                         <div style="margin-top:12px;">
-                            <span class="tech-pill">Electron</span> <span class="tech-pill">Node.js</span> <span
-                                class="tech-pill">SQLite</span> <span class="tech-pill">IPC Logic</span>
+                            <span class="tech-pill">AWS Lambda</span> <span class="tech-pill">GitHub Actions</span>
+                            <span class="tech-pill">Serverless Runner</span> <span class="tech-pill">Azure
+                                Functions</span>
                         </div>
                     </div>
 
                     <div class="project-card">
-                        <strong>AI-Driven Web Architecture</strong>
+                        <strong>LenderToolkit - Terraform Excellence</strong>
                         <p style="font-size: 0.85rem; color:var(--text-muted); margin-top:5px;">
-                            Engineered a zero-server-cost deployment stack using GitHub Pages and Cloudflare.
-                            Leveraged AI-powered rapid prototyping to go from concept to production-ready website.
+                            Engineered enterprise-grade infrastructure automation for financial services. Leveraged
+                            Terraform for consistent, compliant, and scalable multi-environment deployments.
                         </p>
                         <div style="margin-top:12px;">
-                            <span class="tech-pill">GitHub Pages</span> <span class="tech-pill">Cloudflare</span> <span
-                                class="tech-pill">CI/CD</span> <span class="tech-pill">AI Automation</span>
+                            <span class="tech-pill">Terraform</span> <span class="tech-pill">HCL</span> <span
+                                class="tech-pill">AWS</span> <span class="tech-pill">Infrastructure Audit</span>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <strong>Eaton - Cloud Automation</strong>
+                        <p style="font-size: 0.85rem; color:var(--text-muted); margin-top:5px;">
+                            Automated scalable cloud infrastructure management using Terraform with a focus on high
+                            availability, multi-region failover, and performance optimization.
+                        </p>
+                        <div style="margin-top:12px;">
+                            <span class="tech-pill">Terraform</span> <span class="tech-pill">Multi-Cloud</span> <span
+                                class="tech-pill">AWS Automation</span> <span class="tech-pill">High Availability</span>
                         </div>
                     </div>
 
@@ -571,7 +651,7 @@
                     </div>
                 </div>
 
-                <div
+                <div class="tagline"
                     style="text-align: center; margin-top: 40px; font-size: 0.75rem; color: var(--text-muted); font-weight: 600;">
                     Building in Public | Cloud Infrastructure | Security First
                 </div>
