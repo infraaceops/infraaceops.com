@@ -393,6 +393,32 @@
             margin-bottom: 30px;
         }
     </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <script>
+        function downloadFullResume() {
+            const element = document.querySelector('.resume-container');
+            const opt = {
+                margin: 0,
+                filename: 'Shadab_Shah_Senior_DevOps.pdf',
+                image: { type: 'jpeg', quality: 0.98 },
+                html2canvas: {
+                    scale: 2,
+                    useCORS: true,
+                    logging: false,
+                    backgroundColor: '#030712' // Matches --bg
+                },
+                jsPDF: { unit: 'px', format: [1100, element.scrollHeight], orientation: 'portrait' }
+            };
+
+            // Remove the download button temporary to avoid it appearing in PDF
+            const btn = document.querySelector('.download-btn-container');
+            btn.style.display = 'none';
+
+            html2pdf().set(opt).from(document.body).save().then(() => {
+                btn.style.display = 'block';
+            });
+        }
+    </script>
 </head>
 
 <body>
@@ -415,11 +441,11 @@
 
     <main class="container">
         <div class="download-btn-container">
-            <button onclick="window.print()" class="btn btn-primary">
-                <i class="fas fa-file-pdf" style="margin-right: 10px;"></i> Download Resume as PDF
+            <button onclick="downloadFullResume()" class="btn btn-primary">
+                <i class="fas fa-file-pdf" style="margin-right: 10px;"></i> Download Full High-Res Resume
             </button>
         </div>
-        <div class="resume-container">
+        <div class="resume-container" id="resume-content">
             <!-- SIDEBAR -->
             <aside class="sidebar">
                 <div style="text-align: center; margin-bottom: 20px;">
