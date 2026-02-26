@@ -473,7 +473,7 @@
                     <div class="skill-group">
                         <h4>Cloud & Orchestration</h4>
                         <div class="tags">
-                            <span class="tag">AWS (EKS, Transit Gateway)</span>
+                            <span class="tag">AWS (EKS, Karpenter)</span>
                             <span class="tag">Azure (AKS, Synapse)</span>
                             <span class="tag">Kubernetes (Helm, ArgoCD)</span>
                             <span class="tag">Service Mesh / Istio</span>
@@ -482,16 +482,16 @@
                     <div class="skill-group">
                         <h4>Infrastructure as Code</h4>
                         <div class="tags">
-                            <span class="tag">Terraform (Modular/Multi-account)</span>
-                            <span class="tag">CloudFormation</span>
-                            <span class="tag">Packer</span>
+                            <span class="tag">Terraform / Terragrunt</span>
+                            <span class="tag">Modular Architecture</span>
+                            <span class="tag">Packer / Ansible</span>
                             <span class="tag">CI/CD (GitHub Actions)</span>
                         </div>
                     </div>
                     <div class="skill-group">
                         <h4>Linux & Protocols</h4>
                         <div class="tags">
-                            <span class="tag">cgroups / Namespaces</span>
+                            <span class="tag">Cronjobs / Namespaces</span>
                             <span class="tag">CFS Quota / Throttling</span>
                             <span class="tag">HTTP/3 / QUIC / TLS 1.3</span>
                             <span class="tag">Prometheus / Grafana</span>
@@ -645,6 +645,34 @@
                 <!-- Focus Projects -->
                 <div class="resume-section">
                     <h2 class="section-title">Strategic Projects</h2>
+
+                    <div class="project-card">
+                        <strong>DRY Infrastructure Framework (Terragrunt)</strong>
+                        <p style="font-size: 0.85rem; color:var(--text-muted); margin-top:5px;">
+                            Engineered a highly modular infrastructure structure using Terragrunt to minimize code
+                            repetition across multi-region and multi-account environments. Standardized remote state
+                            management and provider configurations for 100+ Terraform modules, reducing boilerplate code
+                            by 75%.
+                        </p>
+                        <div style="margin-top:12px;">
+                            <span class="tech-pill">Terragrunt</span> <span class="tech-pill">Dry Principles</span>
+                            <span class="tech-pill">HCL Mastery</span> <span class="tech-pill">Multi-Account</span>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <strong>Next-Gen EKS Scaling (Karpenter)</strong>
+                        <p style="font-size: 0.85rem; color:var(--text-muted); margin-top:5px;">
+                            Migrated production EKS clusters from Cluster Autoscaler to Karpenter for just-in-time node
+                            provisioning. Reduced node launch times from 3 minutes to under 60 seconds and optimized
+                            cloud spend through intent-based orchestration and intelligent bin-packing.
+                        </p>
+                        <div style="margin-top:12px;">
+                            <span class="tech-pill">Karpenter</span> <span class="tech-pill">AWS EKS</span>
+                            <span class="tech-pill">Cost Optimization</span> <span class="tech-pill">Node
+                                Orchestration</span>
+                        </div>
+                    </div>
 
                     <div class="project-card">
                         <strong>GitOps-Based Continuous Delivery</strong>
