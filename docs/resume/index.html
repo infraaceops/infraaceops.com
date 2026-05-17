@@ -377,7 +377,7 @@
                 print-color-adjust: exact;
                 color: #334155 !important;
             }
-            
+
             .description li {
                 color: #334155 !important;
             }
@@ -404,7 +404,7 @@
             text-align: center;
             margin-bottom: 30px;
         }
-        
+
         .btn-primary {
             background-color: var(--primary);
             color: white;
@@ -417,11 +417,12 @@
             transition: all 0.3s ease;
             box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
         }
-        
+
         .btn-primary:hover {
             background-color: #2563eb;
             transform: translateY(-2px);
         }
+
         /* PDF Export Overrides */
         .pdf-mode {
             margin: 0 !important;
@@ -432,11 +433,13 @@
             backdrop-filter: none !important;
             min-height: auto !important;
         }
+
         .pdf-mode .sidebar {
             background: #0f172a !important;
             backdrop-filter: none !important;
             border-right: 1px solid #1e293b !important;
         }
+
         .pdf-mode .resume-header h1 {
             background: none !important;
             -webkit-background-clip: initial !important;
@@ -444,9 +447,10 @@
             -webkit-text-fill-color: #ffffff !important;
             color: #ffffff !important;
         }
-        .pdf-mode .about-box, 
-        .pdf-mode .tag, 
-        .pdf-mode .project-card, 
+
+        .pdf-mode .about-box,
+        .pdf-mode .tag,
+        .pdf-mode .project-card,
         .pdf-mode .date,
         .pdf-mode .tech-pill {
             background: #1e293b !important;
@@ -454,21 +458,25 @@
             border-color: #334155 !important;
             color: #f8fafc !important;
         }
-        .pdf-mode .text-muted, 
-        .pdf-mode .description, 
+
+        .pdf-mode .text-muted,
+        .pdf-mode .description,
         .pdf-mode .contact-item {
             color: #cbd5e1 !important;
         }
+
         .pdf-mode .company,
         .pdf-mode .sidebar h3,
         .pdf-mode p {
             color: #60a5fa !important;
         }
+
         .pdf-mode .role,
         .pdf-mode .section-title,
         .pdf-mode strong {
             color: #ffffff !important;
         }
+
         .pdf-mode .profile-img {
             background: #030712 !important;
             box-shadow: none !important;
@@ -478,10 +486,10 @@
     <script>
         function downloadFullResume() {
             const element = document.querySelector('.resume-container');
-            
+
             // Apply PDF mode class
             element.classList.add('pdf-mode');
-            
+
             // Remove the download button temporarily
             const btn = document.querySelector('.download-btn-container');
             btn.style.display = 'none';
@@ -539,10 +547,12 @@
             <aside class="sidebar">
                 <div style="text-align: center; margin-bottom: 20px;">
                     <img src="../assets/sign-pp.png" alt="Shadab Shah" class="profile-img">
-                    <h2 style="font-size: 1.5rem; font-weight: 800; color: var(--text); margin-top: 15px; letter-spacing: -0.5px;">
+                    <h2
+                        style="font-size: 1.5rem; font-weight: 800; color: var(--text); margin-top: 15px; letter-spacing: -0.5px;">
                         SHADAB SHAH
                     </h2>
-                    <p style="font-size: 0.85rem; color: var(--primary); font-weight: 600; text-transform: uppercase; letter-spacing: 1px; margin-top: 5px;">
+                    <p
+                        style="font-size: 0.85rem; color: var(--primary); font-weight: 600; text-transform: uppercase; letter-spacing: 1px; margin-top: 5px;">
                         Lead Automation Engineer
                     </p>
                 </div>
@@ -550,11 +560,16 @@
                 <div>
                     <h3>Connect</h3>
                     <ul class="contact-list">
-                        <li class="contact-item"><i class="fas fa-map-marker-alt" style="width: 20px;"></i> Canada | Open to Relocation</li>
-                        <li class="contact-item"><i class="fas fa-envelope" style="width: 20px;"></i> shadab@infraaceops.com</li>
-                        <li class="contact-item"><i class="fab fa-linkedin" style="width: 20px;"></i> linkedin.com/in/shadab-shah</li>
-                        <li class="contact-item"><i class="fas fa-globe" style="width: 20px;"></i> infraaceops.com</li>
-                        <li class="contact-item"><i class="fab fa-github" style="width: 20px;"></i> github.com/infraaceops</li>
+                        <li class="contact-item"><i class="fas fa-map-marker-alt" style="width: 20px;"></i> Canada |
+                            Open to Relocation</li>
+                        <li class="contact-item"><i class="fas fa-envelope" style="width: 20px;"></i>
+                            shahshadab1680@gmail.com</li>
+                        <li class="contact-item"><i class="fab fa-linkedin" style="width: 20px;"></i>
+                            linkedin.com/in/shadab-shah</li>
+                        <li class="contact-item"><i class="fas fa-globe" style="width: 20px;"></i>
+                            infraaceops.github.io/infraaceops.com</li>
+                        <li class="contact-item"><i class="fab fa-github" style="width: 20px;"></i>
+                            github.com/infraaceops</li>
                     </ul>
                 </div>
 
@@ -626,7 +641,12 @@
                 </header>
 
                 <div class="about-box">
-                    "Lead Automation Engineer with 9 years of comprehensive experience spanning BigData, DevOps, Advanced SRE, and Platform Engineering. Proven track record in designing, automating, and operating large-scale, cloud-native infrastructures. Expertise across multiple cloud platforms (GCP, Azure, AWS), BigData ecosystems (Hadoop, Cloudera), and enterprise databases. Dedicated to building robust, automated deployment pipelines, ensuring high availability through advanced SRE practices, and driving operational excellence across globally distributed teams."
+                    "Lead Automation Engineer with 9 years of comprehensive experience spanning BigData, DevOps,
+                    Advanced SRE, and Platform Engineering. Proven track record in designing, automating, and operating
+                    large-scale, cloud-native infrastructures. Expertise across multiple cloud platforms (GCP, Azure,
+                    AWS), BigData ecosystems (Hadoop, Cloudera), and enterprise databases. Dedicated to building robust,
+                    automated deployment pipelines, ensuring high availability through advanced SRE practices, and
+                    driving operational excellence across globally distributed teams."
                 </div>
 
                 <!-- Experience -->
@@ -643,10 +663,14 @@
                                 <span class="date">Jan 2024 - Present</span>
                             </div>
                             <ul class="description">
-                                <li>Spearheaded enterprise-wide automation initiatives across multi-cloud environments (GCP, Azure, AWS), reducing manual operational overhead by 45%.</li>
-                                <li>Designed and implemented robust API Gateway solutions for secure, high-throughput microservices communication.</li>
-                                <li>Led cross-functional teams in adopting GitOps and advanced CI/CD pipelines, reducing deployment times by 60%.</li>
-                                <li>Architected comprehensive infrastructure-as-code (IaC) modules using Terraform and Ansible, establishing organizational standards for infrastructure provisioning.</li>
+                                <li>Spearheaded enterprise-wide automation initiatives across multi-cloud environments
+                                    (GCP, Azure, AWS), reducing manual operational overhead by 45%.</li>
+                                <li>Designed and implemented robust API Gateway solutions for secure, high-throughput
+                                    microservices communication.</li>
+                                <li>Led cross-functional teams in adopting GitOps and advanced CI/CD pipelines, reducing
+                                    deployment times by 60%.</li>
+                                <li>Architected comprehensive infrastructure-as-code (IaC) modules using Terraform and
+                                    Ansible, establishing organizational standards for infrastructure provisioning.</li>
                             </ul>
                         </div>
 
@@ -659,9 +683,13 @@
                                 <span class="date">Jun 2022 - Dec 2023</span>
                             </div>
                             <ul class="description">
-                                <li>Engineered scalable developer platforms on Kubernetes, improving engineering velocity and resource utilization.</li>
-                                <li>Developed self-service portals for automated infrastructure provisioning, enabling developers to spin up environments in minutes rather than days.</li>
-                                <li>Managed stateful applications and relational databases (PostgreSQL, MySQL) in cloud-native environments, ensuring zero-downtime migrations and reliable backups.</li>
+                                <li>Engineered scalable developer platforms on Kubernetes, improving engineering
+                                    velocity and resource utilization.</li>
+                                <li>Developed self-service portals for automated infrastructure provisioning, enabling
+                                    developers to spin up environments in minutes rather than days.</li>
+                                <li>Managed stateful applications and relational databases (PostgreSQL, MySQL) in
+                                    cloud-native environments, ensuring zero-downtime migrations and reliable backups.
+                                </li>
                             </ul>
                         </div>
 
@@ -674,10 +702,14 @@
                                 <span class="date">Mar 2020 - May 2022</span>
                             </div>
                             <ul class="description">
-                                <li>Driven site reliability engineering practices for high-traffic enterprise platforms, maintaining 99.99% uptime SLAs.</li>
-                                <li>Implemented advanced observability stacks (Prometheus, Grafana, ELK) to drastically reduce MTTR and proactively identify bottlenecks.</li>
-                                <li>Automated incident response workflows and conducted rigorous capacity planning and load testing ahead of peak retail seasons.</li>
-                                <li>Managed and tuned varied Operating Systems (Linux, Windows Server) for optimal application performance.</li>
+                                <li>Driven site reliability engineering practices for high-traffic enterprise platforms,
+                                    maintaining 99.99% uptime SLAs.</li>
+                                <li>Implemented advanced observability stacks (Prometheus, Grafana, ELK) to drastically
+                                    reduce MTTR and proactively identify bottlenecks.</li>
+                                <li>Automated incident response workflows and conducted rigorous capacity planning and
+                                    load testing ahead of peak retail seasons.</li>
+                                <li>Managed and tuned varied Operating Systems (Linux, Windows Server) for optimal
+                                    application performance.</li>
                             </ul>
                         </div>
 
@@ -690,9 +722,12 @@
                                 <span class="date">Oct 2018 - Feb 2020</span>
                             </div>
                             <ul class="description">
-                                <li>Built and maintained continuous integration and delivery (CI/CD) pipelines using Jenkins, GitLab CI, and GitHub Actions.</li>
-                                <li>Containerized legacy monolithic applications using Docker and orchestrated them with Kubernetes.</li>
-                                <li>Configured secure networking topologies and managed cloud security posture, ensuring compliance with industry standards.</li>
+                                <li>Built and maintained continuous integration and delivery (CI/CD) pipelines using
+                                    Jenkins, GitLab CI, and GitHub Actions.</li>
+                                <li>Containerized legacy monolithic applications using Docker and orchestrated them with
+                                    Kubernetes.</li>
+                                <li>Configured secure networking topologies and managed cloud security posture, ensuring
+                                    compliance with industry standards.</li>
                             </ul>
                         </div>
 
@@ -705,9 +740,12 @@
                                 <span class="date">Aug 2017 - Sep 2018</span>
                             </div>
                             <ul class="description">
-                                <li>Designed and maintained high-performance BigData clusters using Hadoop and Cloudera Data Platform (CDP).</li>
-                                <li>Developed complex data pipelines for real-time and batch processing, handling terabytes of analytical data.</li>
-                                <li>Optimized database queries and managed data lakes for enterprise analytics and business intelligence workflows.</li>
+                                <li>Designed and maintained high-performance BigData clusters using Hadoop and Cloudera
+                                    Data Platform (CDP).</li>
+                                <li>Developed complex data pipelines for real-time and batch processing, handling
+                                    terabytes of analytical data.</li>
+                                <li>Optimized database queries and managed data lakes for enterprise analytics and
+                                    business intelligence workflows.</li>
                             </ul>
                         </div>
                     </div>
@@ -720,7 +758,9 @@
                     <div class="project-card">
                         <strong>Multi-Cloud Infrastructure Automation</strong>
                         <p style="font-size: 0.85rem; color:var(--text-muted); margin-top:5px;">
-                            Engineered a highly modular infrastructure framework using Terraform and Ansible to deploy consistent environments across GCP, Azure, and AWS. Integrated seamlessly with API Gateways for secure traffic routing and management.
+                            Engineered a highly modular infrastructure framework using Terraform and Ansible to deploy
+                            consistent environments across GCP, Azure, and AWS. Integrated seamlessly with API Gateways
+                            for secure traffic routing and management.
                         </p>
                         <div style="margin-top:12px;">
                             <span class="tech-pill">Terraform</span> <span class="tech-pill">Ansible</span>
@@ -731,7 +771,9 @@
                     <div class="project-card">
                         <strong>BigData Ecosystem Modernization</strong>
                         <p style="font-size: 0.85rem; color:var(--text-muted); margin-top:5px;">
-                            Led the migration and optimization of legacy Hadoop clusters to modern Cloudera Data Platforms, improving query performance and data availability while reducing overall compute costs.
+                            Led the migration and optimization of legacy Hadoop clusters to modern Cloudera Data
+                            Platforms, improving query performance and data availability while reducing overall compute
+                            costs.
                         </p>
                         <div style="margin-top:12px;">
                             <span class="tech-pill">Hadoop</span> <span class="tech-pill">Cloudera</span>
@@ -742,7 +784,9 @@
                     <div class="project-card">
                         <strong>Advanced SRE & Observability Strategy</strong>
                         <p style="font-size: 0.85rem; color:var(--text-muted); margin-top:5px;">
-                            Architected a unified observability platform leveraging Prometheus and Grafana. Implemented custom SLIs/SLOs and automated alerting, enabling predictive issue resolution before customer impact.
+                            Architected a unified observability platform leveraging Prometheus and Grafana. Implemented
+                            custom SLIs/SLOs and automated alerting, enabling predictive issue resolution before
+                            customer impact.
                         </p>
                         <div style="margin-top:12px;">
                             <span class="tech-pill">SRE</span> <span class="tech-pill">Prometheus</span>
@@ -751,7 +795,8 @@
                     </div>
                 </div>
 
-                <div class="tagline" style="text-align: center; margin-top: 40px; font-size: 0.75rem; color: var(--text-muted); font-weight: 600;">
+                <div class="tagline"
+                    style="text-align: center; margin-top: 40px; font-size: 0.75rem; color: var(--text-muted); font-weight: 600;">
                     Lead Automation | BigData | Advanced SRE | Multi-Cloud Architecture
                 </div>
             </div>
@@ -764,8 +809,10 @@
         </div>
     </footer>
 
-    <a href="https://wa.me/923168331433" class="whatsapp-float" target="_blank" style="position: fixed; bottom: 20px; right: 20px; z-index: 100;">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" style="width: 50px; height: 50px;">
+    <a href="https://wa.me/923168331433" class="whatsapp-float" target="_blank"
+        style="position: fixed; bottom: 20px; right: 20px; z-index: 100;">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp"
+            style="width: 50px; height: 50px;">
     </a>
 
 </body>
