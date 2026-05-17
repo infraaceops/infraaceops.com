@@ -422,31 +422,90 @@
             background-color: #2563eb;
             transform: translateY(-2px);
         }
+        /* PDF Export Overrides */
+        .pdf-mode {
+            margin: 0 !important;
+            border-radius: 0 !important;
+            border: none !important;
+            box-shadow: none !important;
+            background: #030712 !important;
+            backdrop-filter: none !important;
+            min-height: auto !important;
+        }
+        .pdf-mode .sidebar {
+            background: #0f172a !important;
+            backdrop-filter: none !important;
+            border-right: 1px solid #1e293b !important;
+        }
+        .pdf-mode .resume-header h1 {
+            background: none !important;
+            -webkit-background-clip: initial !important;
+            background-clip: initial !important;
+            -webkit-text-fill-color: #ffffff !important;
+            color: #ffffff !important;
+        }
+        .pdf-mode .about-box, 
+        .pdf-mode .tag, 
+        .pdf-mode .project-card, 
+        .pdf-mode .date,
+        .pdf-mode .tech-pill {
+            background: #1e293b !important;
+            backdrop-filter: none !important;
+            border-color: #334155 !important;
+            color: #f8fafc !important;
+        }
+        .pdf-mode .text-muted, 
+        .pdf-mode .description, 
+        .pdf-mode .contact-item {
+            color: #cbd5e1 !important;
+        }
+        .pdf-mode .company,
+        .pdf-mode .sidebar h3,
+        .pdf-mode p {
+            color: #60a5fa !important;
+        }
+        .pdf-mode .role,
+        .pdf-mode .section-title,
+        .pdf-mode strong {
+            color: #ffffff !important;
+        }
+        .pdf-mode .profile-img {
+            background: #030712 !important;
+            box-shadow: none !important;
+        }
     </style>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
     <script>
         function downloadFullResume() {
             const element = document.querySelector('.resume-container');
-            const opt = {
-                margin: 0,
-                filename: 'Shadab_Shah_Lead_Automation_Engineer.pdf',
-                image: { type: 'jpeg', quality: 0.98 },
-                html2canvas: {
-                    scale: 2,
-                    useCORS: true,
-                    logging: false,
-                    backgroundColor: '#030712' // Matches --bg
-                },
-                jsPDF: { unit: 'px', format: [1100, element.scrollHeight], orientation: 'portrait' }
-            };
-
-            // Remove the download button temporary to avoid it appearing in PDF
+            
+            // Apply PDF mode class
+            element.classList.add('pdf-mode');
+            
+            // Remove the download button temporarily
             const btn = document.querySelector('.download-btn-container');
             btn.style.display = 'none';
 
-            html2pdf().set(opt).from(element).save().then(() => {
-                btn.style.display = 'block';
-            });
+            // Allow DOM to update
+            setTimeout(() => {
+                const opt = {
+                    margin: 0,
+                    filename: 'Shadab_Shah_Lead_Automation_Engineer.pdf',
+                    image: { type: 'jpeg', quality: 1.0 },
+                    html2canvas: {
+                        scale: 3, // higher scale for crisp text
+                        useCORS: true,
+                        logging: false,
+                        backgroundColor: '#030712'
+                    },
+                    jsPDF: { unit: 'px', format: [1100, Math.ceil(element.offsetHeight)], orientation: 'portrait' }
+                };
+
+                html2pdf().set(opt).from(element).save().then(() => {
+                    btn.style.display = 'block';
+                    element.classList.remove('pdf-mode');
+                });
+            }, 100);
         }
     </script>
 </head>
